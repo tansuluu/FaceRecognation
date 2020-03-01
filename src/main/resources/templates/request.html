@@ -68,7 +68,7 @@
                                 <i class="fas fa-users"></i>Users</a>
                         </li>
                         <li class="active">
-                            <a th:href="@{/request}">
+                            <a th:href="@{/requests}">
                                 <i class="fas fa-chart-bar"></i>Requests</a>
                         </li>
                     </ul>
@@ -94,7 +94,7 @@
                                 <i class="fas fa-users"></i>Users</a>
                         </li >
                         <li  class="active">
-                            <a th:href="@{/request}">
+                            <a th:href="@{/requests}">
                                 <i class="fas fa-chart-bar"></i>Requests</a>
                         </li>
                     </ul>
@@ -265,13 +265,14 @@
             <!-- HEADER DESKTOP-->
             <!-- MAIN CONTENT-->
             <div class="main-content" style="padding-top: 100px">
+                <h4 th:if="${message!=null}" th:text="${message}"></h4>
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <button type="button" class="au-btn au-btn-icon au-btn--blue" data-toggle="modal" data-target="#basicExampleModal" style="line-height: 30px; font-size: 12px">
-                                        <i class="zmdi zmdi-plus"></i> user
+                                        <i class="zmdi zmdi-plus"></i> request
                                     </button>
                                 </div>
                                 <div class="table-responsive table--no-card m-b-30">
@@ -311,7 +312,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New user</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">New request</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -319,7 +320,7 @@
                 <div class="modal-body">
                     <form class="login100-form validate-form" th:action="@{/addRequest}" method="post" th:object="${item}" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label class="control-label mb-1">Full name</label>
+                            <label class="control-label mb-1">Title</label>
                             <input  type="text" class="form-control" required="required" th:field="*{title}">
                         </div>
                         <div class="form-group">

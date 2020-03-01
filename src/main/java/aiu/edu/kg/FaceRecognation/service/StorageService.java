@@ -21,15 +21,12 @@ public class StorageService {
     Logger log = LoggerFactory.getLogger(this.getClass().getName());
     public static final Path rootLocation = Paths.get("upload-dir");
 
-    public String store(MultipartFile file){
+    public void store(MultipartFile file){
         try {
-            Path path = this.rootLocation.resolve(file.getOriginalFilename());
-            Files.copy(file.getInputStream(), path);
-            return path.toString();
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
         } catch (Exception e) {
             log.error("FAIL! Such file already exist", e);
         }
-        return null;
     }
 
     public Resource loadFile(String filename) {

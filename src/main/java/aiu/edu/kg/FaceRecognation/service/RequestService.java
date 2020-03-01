@@ -17,4 +17,7 @@ public class RequestService {
         return requestRepository.findAll();
     }
 
+    public void save(Request request){
+        requestRepository.save(request);
+    }
 }

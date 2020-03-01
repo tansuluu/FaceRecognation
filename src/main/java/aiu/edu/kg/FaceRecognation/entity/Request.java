@@ -18,6 +18,7 @@ public class Request extends BaseEntity {
     private Long id;
 
     private String title;
+    private String fileName;
 
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -26,7 +27,6 @@ public class Request extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
 
 
 }
