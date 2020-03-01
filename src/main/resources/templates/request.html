@@ -68,7 +68,7 @@
                                 <i class="fas fa-users"></i>Users</a>
                         </li>
                         <li class="active">
-                            <a th:href="@{/request}">
+                            <a th:href="@{/requests}">
                                 <i class="fas fa-chart-bar"></i>Requests</a>
                         </li>
                     </ul>
@@ -94,7 +94,7 @@
                                 <i class="fas fa-users"></i>Users</a>
                         </li >
                         <li  class="active">
-                            <a th:href="@{/request}">
+                            <a th:href="@{/requests}">
                                 <i class="fas fa-chart-bar"></i>Requests</a>
                         </li>
                     </ul>
@@ -265,13 +265,14 @@
             <!-- HEADER DESKTOP-->
             <!-- MAIN CONTENT-->
             <div class="main-content" style="padding-top: 100px">
+                <h4 th:if="${message!=null}" th:text="${message}"></h4>
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <button type="button" class="au-btn au-btn-icon au-btn--blue" data-toggle="modal" data-target="#basicExampleModal" style="line-height: 30px; font-size: 12px">
-                                        <i class="zmdi zmdi-plus"></i> user
+                                        <i class="zmdi zmdi-plus"></i> request
                                     </button>
                                 </div>
                                 <div class="table-responsive table--no-card m-b-30">
@@ -279,18 +280,18 @@
                                     <table width="100%" class="display table table-borderless table-striped table-earning" id="example">
                                         <thead>
                                         <tr>
-                                            <th>Login</th>
-                                            <th>Full name</th>
-                                            <th></th>
+                                            <th>Title</th>
+                                            <th>Status</th>
+                                            <th>User</th>
                                             <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="user:${users}">
-                                            <td th:text="${user.username}"></td>
-                                            <td th:text="${user.fullName}"></td>
-                                            <td class="button"><a th:href="@{/deleteUser/__${user.id}__}">Delete</a></td>
-                                            <td class="button"><a th:href="@{/updateUser/__${user.id}__}">Update</a></td>
+                                        <tr th:each="item:${items}">
+                                            <td th:text="${item.title}"></td>
+                                            <td th:text="${item.status.name()}"></td>
+                                            <td th:text="${item.user.fullName}"></td>
+                                            <td class="button"><a th:href="@{/deleteUser/__${item.id}__}">Delete</a></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -305,6 +306,47 @@
         </div>
 
     </div>
+    <!--Modal -->
+    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="login100-form validate-form" th:action="@{/addRequest}" method="post" th:object="${item}" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="control-label mb-1">Title</label>
+                            <input  type="text" class="form-control" required="required" th:field="*{title}">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label mb-1">File</label>
+                            <input  type="file"  name="file" class="form-control" required="required">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            if($("#error").val()==1){
+                $('#basicExampleModal').modal('show');
+            }
+            $("#example").DataTable({
+                "scrollX":"500px",
+                "scrollCollapse": true,
+            });
+        });
+    </script>
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
