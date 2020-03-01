@@ -3,21 +3,20 @@ package aiu.edu.kg.FaceRecognation.controller;
 import aiu.edu.kg.FaceRecognation.entity.Request;
 import aiu.edu.kg.FaceRecognation.entity.User;
 import aiu.edu.kg.FaceRecognation.enums.StageStatus;
-import aiu.edu.kg.FaceRecognation.service.RequestService;
-import aiu.edu.kg.FaceRecognation.service.StorageService;
-import aiu.edu.kg.FaceRecognation.service.UserDetailsServiceImpl;
-import aiu.edu.kg.FaceRecognation.service.UserService;
+import aiu.edu.kg.FaceRecognation.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.security.Principal;
 
 @Controller
@@ -29,6 +28,9 @@ public class RequestController {
 
     @Autowired
     private StorageService storageService;
+
+    @Autowired
+    private RequestResultService requestResultService;
 
     @Autowired
     private UserService userService;
@@ -55,5 +57,26 @@ public class RequestController {
             return "requests";
         }
         return  "redirect:/requests";
+    }
+
+    @GetMapping("/image/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> getImage(@PathVariable String filename) {
+        Resource file = storageService.loadFile(filename);
+        String mimeType;
+        try {
+            mimeType = Files.probeContentType(file.getFile().toPath());
+        } catch (IOException e) {
+            System.out.println("Error while loading file " + e);
+        }
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "filename=\"" + file.getFilename() + "\"")
+                .body(file);
+    }
+
+    @RequestMapping(value = "/view")
+    public String view(@RequestParam("id")Long id, Model model){
+        model.addAttribute("item", requestResultService.getAllByRequest(requestService.getById(id)).get(0));
+        return "requestResult";
     }
 }

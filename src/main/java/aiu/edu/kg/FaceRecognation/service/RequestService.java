@@ -20,4 +20,8 @@ public class RequestService {
     public void save(Request request){
         requestRepository.save(request);
     }
+
+    public Request getById(Long id){
+        return requestRepository.getOne(id);
+    }
 }

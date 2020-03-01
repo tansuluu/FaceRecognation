@@ -3,6 +3,9 @@ import datetime
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
+from app.service.request_service import request_process
+
+
 def privet():
     print("priver")
     from app import db
@@ -11,8 +14,8 @@ def privet():
     db.session.close()
     print(result[0].full_name)
 
-# def run_request():
-
+def run_request():
+    request_process()
 
 
 def run_schedule():
@@ -20,11 +23,7 @@ def run_schedule():
 
     if not app.debug:
         scheduler = BackgroundScheduler()
-        # scheduler = BlockingScheduler()
-        # it is also possible to enable the API directly
-        # scheduler.add_jobstore('sqlalchemy', engine=db.engine)
-
-        scheduler.add_job(privet, 'interval', seconds=10, replace_existing=True, id='verify_new_subscribers')
+        scheduler.add_job(run_request, 'interval', seconds=10, replace_existing=True, id='verify_new_subscribers')
 
         app.logger.info("Added jobs")
         scheduler.start()
