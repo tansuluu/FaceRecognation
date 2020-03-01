@@ -1,0 +1,730 @@
+INFO:app:Created App
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:app:Started scheduler
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 13:53:10.352331+06:00 (in 29.978122 seconds)
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 13:53:10 +06)" (scheduled at 2020-03-01 13:53:10.352331+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 13:53:40.352331+06:00 (in 29.987011 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 13:53:40 +06)" executed successfully
+INFO:apscheduler.scheduler:Scheduler has been shut down
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:No jobs; waiting until a job is added
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:app:Started scheduler
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 13:57:00.297054+06:00 (in 29.979819 seconds)
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 13:57:00 +06)" (scheduled at 2020-03-01 13:57:00.297054+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 13:57:30.297054+06:00 (in 29.997250 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 13:57:30 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\python project\app\jobs\jobs.py", line 10, in privet
+    result = db.engine.execute(queryPassFront).fetchall()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 937, in engine
+    return self.get_engine()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 956, in get_engine
+    return connector.get_engine()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 561, in get_engine
+    self._engine = rv = self._sa.create_engine(sa_url, options)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 966, in create_engine
+    return sqlalchemy.create_engine(sa_url, **engine_opts)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\__init__.py", line 479, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\strategies.py", line 87, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\dialects\oracle\cx_oracle.py", line 869, in dbapi
+    import cx_Oracle
+ModuleNotFoundError: No module named 'cx_Oracle'
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 13:57:30 +06)" (scheduled at 2020-03-01 13:57:30.297054+06:00)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 13:57:30 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\python project\app\jobs\jobs.py", line 10, in privet
+    result = db.engine.execute(queryPassFront).fetchall()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 937, in engine
+    return self.get_engine()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 956, in get_engine
+    return connector.get_engine()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 561, in get_engine
+    self._engine = rv = self._sa.create_engine(sa_url, options)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 966, in create_engine
+    return sqlalchemy.create_engine(sa_url, **engine_opts)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\__init__.py", line 479, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\strategies.py", line 87, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\dialects\oracle\cx_oracle.py", line 869, in dbapi
+    import cx_Oracle
+ModuleNotFoundError: No module named 'cx_Oracle'
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 13:58:00.297054+06:00 (in 29.915498 seconds)
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 13:59:25.506975+06:00 (in 29.993669 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 13:59:25 +06)" (scheduled at 2020-03-01 13:59:25.506975+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 13:59:55.506975+06:00 (in 29.988296 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 13:59:55 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\python project\app\jobs\jobs.py", line 10, in privet
+    result = db.engine.execute(queryPassFront).fetchall()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 937, in engine
+    return self.get_engine()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 956, in get_engine
+    return connector.get_engine()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 561, in get_engine
+    self._engine = rv = self._sa.create_engine(sa_url, options)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 966, in create_engine
+    return sqlalchemy.create_engine(sa_url, **engine_opts)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\__init__.py", line 479, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\strategies.py", line 87, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\dialects\mysql\mysqldb.py", line 118, in dbapi
+    return __import__("MySQLdb")
+ModuleNotFoundError: No module named 'MySQLdb'
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 13:59:55 +06)" (scheduled at 2020-03-01 13:59:55.506975+06:00)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 13:59:55 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\python project\app\jobs\jobs.py", line 10, in privet
+    result = db.engine.execute(queryPassFront).fetchall()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 937, in engine
+    return self.get_engine()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 956, in get_engine
+    return connector.get_engine()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 561, in get_engine
+    self._engine = rv = self._sa.create_engine(sa_url, options)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_sqlalchemy\__init__.py", line 966, in create_engine
+    return sqlalchemy.create_engine(sa_url, **engine_opts)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\__init__.py", line 479, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\strategies.py", line 87, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\dialects\mysql\mysqldb.py", line 118, in dbapi
+    return __import__("MySQLdb")
+ModuleNotFoundError: No module named 'MySQLdb'
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 14:00:25.506975+06:00 (in 29.982466 seconds)
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:app:Started scheduler
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 14:14:18.150687+06:00 (in 29.991475 seconds)
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 14:14:18 +06)" (scheduled at 2020-03-01 14:14:18.150687+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 14:14:48.150687+06:00 (in 29.991214 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 14:14:48 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 14:14:48 +06)" (scheduled at 2020-03-01 14:14:48.150687+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 14:15:18.150687+06:00 (in 29.994827 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 14:15:18 +06)" executed successfully
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 22:59:01.596915+06:00 (in 29.953274 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 22:59:01 +06)" (scheduled at 2020-03-01 22:59:01.596915+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 22:59:31.596915+06:00 (in 29.980005 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 22:59:31 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 22:59:31 +06)" (scheduled at 2020-03-01 22:59:31.596915+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:00:01.596915+06:00 (in 29.991310 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:00:01 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:00:01 +06)" (scheduled at 2020-03-01 23:00:01.596915+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:00:31.596915+06:00 (in 29.997283 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:00:31 +06)" executed successfully
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:04:16.240201+06:00 (in 30.000000 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:04:16 +06)" (scheduled at 2020-03-01 23:04:16.240201+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:04:46.240201+06:00 (in 29.986042 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:04:46 +06)" executed successfully
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:05:00.002125+06:00 (in 29.984345 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:05:00 +06)" (scheduled at 2020-03-01 23:05:00.002125+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:05:30.002125+06:00 (in 29.984182 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:05:30 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1054, "Unknown column 'create_date' in 'order clause'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 10, in privet
+    result = db.engine.execute(queryPassFront).fetchall()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 2182, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 976, in execute
+    return self._execute_text(object_, multiparams, params)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1149, in _execute_text
+    parameters,
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1250, in _execute_context
+    e, statement, parameters, cursor, context
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.InternalError: (pymysql.err.InternalError) (1054, "Unknown column 'create_date' in 'order clause'")
+[SQL: SELECT * FROM user order by create_date desc limit 1]
+(Background on this error at: http://sqlalche.me/e/2j85)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:05:30 +06)" (scheduled at 2020-03-01 23:05:30.002125+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:06:00.002125+06:00 (in 29.976725 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:06:00 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1054, "Unknown column 'create_date' in 'order clause'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 10, in privet
+    result = db.engine.execute(queryPassFront).fetchall()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 2182, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 976, in execute
+    return self._execute_text(object_, multiparams, params)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1149, in _execute_text
+    parameters,
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1250, in _execute_context
+    e, statement, parameters, cursor, context
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.InternalError: (pymysql.err.InternalError) (1054, "Unknown column 'create_date' in 'order clause'")
+[SQL: SELECT * FROM user order by create_date desc limit 1]
+(Background on this error at: http://sqlalche.me/e/2j85)
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:06:25.764669+06:00 (in 30.000000 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:06:25 +06)" (scheduled at 2020-03-01 23:06:25.764669+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:06:55.764669+06:00 (in 29.999335 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:06:55 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1054, "Unknown column 'create_date' in 'order clause'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 10, in privet
+    result = db.engine.execute(queryPassFront).fetchall()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 2182, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 976, in execute
+    return self._execute_text(object_, multiparams, params)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1149, in _execute_text
+    parameters,
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1250, in _execute_context
+    e, statement, parameters, cursor, context
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1246, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.InternalError: (pymysql.err.InternalError) (1054, "Unknown column 'create_date' in 'order clause'")
+[SQL: SELECT * FROM user order by create_date desc]
+(Background on this error at: http://sqlalche.me/e/2j85)
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:08:50.874968+06:00 (in 29.984407 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:08:50 +06)" (scheduled at 2020-03-01 23:08:50.874968+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:09:20.874968+06:00 (in 29.984039 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:09:20 +06)" executed successfully
+INFO:werkzeug: * Detected change in 'C:\\Users\\tanya\\Desktop\\FaceRecognation\\python project\\app\\jobs\\jobs.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:09:20 +06)" (scheduled at 2020-03-01 23:09:20.874968+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:09:50.874968+06:00 (in 29.987038 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:30], next run at: 2020-03-01 23:09:50 +06)" executed successfully
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:15:34.473661+06:00 (in 10.000000 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:15:34 +06)" (scheduled at 2020-03-01 23:15:34.473661+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:15:44.473661+06:00 (in 9.986587 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:15:44 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:15:44 +06)" (scheduled at 2020-03-01 23:15:44.473661+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:15:54.473661+06:00 (in 9.985762 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:15:54 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:15:54 +06)" (scheduled at 2020-03-01 23:15:54.473661+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:16:04.473661+06:00 (in 9.988110 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:04 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:04 +06)" (scheduled at 2020-03-01 23:16:04.473661+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:16:14.473661+06:00 (in 9.990442 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:14 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:14 +06)" (scheduled at 2020-03-01 23:16:14.473661+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:16:24.473661+06:00 (in 9.990876 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:24 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:24 +06)" (scheduled at 2020-03-01 23:16:24.473661+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:16:34.473661+06:00 (in 9.989797 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:34 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:34 +06)" (scheduled at 2020-03-01 23:16:34.473661+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:16:44.473661+06:00 (in 9.984991 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:44 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:44 +06)" (scheduled at 2020-03-01 23:16:44.473661+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:16:54.473661+06:00 (in 9.999161 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:54 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:54 +06)" (scheduled at 2020-03-01 23:16:54.473661+06:00)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:16:54 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:17:04.473661+06:00 (in 9.985942 seconds)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:17:04 +06)" (scheduled at 2020-03-01 23:17:04.473661+06:00)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:17:04 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:17:14.473661+06:00 (in 9.862563 seconds)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:17:24.473661+06:00 (in 9.958024 seconds)
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:17:24 +06)" (scheduled at 2020-03-01 23:17:14.473661+06:00)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:17:24 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:17:34.473661+06:00 (in 9.986178 seconds)
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:17:34 +06)" (scheduled at 2020-03-01 23:17:24.473661+06:00)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:17:34 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:17:44.473661+06:00 (in 9.988481 seconds)
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:17:44 +06)" (scheduled at 2020-03-01 23:17:34.473661+06:00)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:17:44 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:17:54.473661+06:00 (in 9.952684 seconds)
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:17:54 +06)" (scheduled at 2020-03-01 23:17:44.473661+06:00)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:17:54 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:18:04.473661+06:00 (in 9.985509 seconds)
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:04 +06)" (scheduled at 2020-03-01 23:17:54.473661+06:00)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:04 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:18:14.473661+06:00 (in 9.984596 seconds)
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:14 +06)" (scheduled at 2020-03-01 23:18:04.473661+06:00)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:14 +06)" executed successfully
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:18:22.883843+06:00 (in 9.984342 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:22 +06)" (scheduled at 2020-03-01 23:18:22.883843+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:18:32.883843+06:00 (in 9.996233 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:32 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:32 +06)" (scheduled at 2020-03-01 23:18:32.883843+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:18:42.883843+06:00 (in 9.989018 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:42 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:42 +06)" (scheduled at 2020-03-01 23:18:42.883843+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:18:52.883843+06:00 (in 9.979178 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:52 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:18:52 +06)" (scheduled at 2020-03-01 23:18:52.883843+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:19:02.883843+06:00 (in 9.992891 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:19:02 +06)" executed successfully
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:19:11.222406+06:00 (in 9.984411 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:19:11 +06)" (scheduled at 2020-03-01 23:19:11.222406+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:19:21.222406+06:00 (in 9.986641 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:19:21 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 12, in privet
+    print(result.fullName)
+AttributeError: 'list' object has no attribute 'fullName'
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:19:21 +06)" (scheduled at 2020-03-01 23:19:21.222406+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:19:31.222406+06:00 (in 9.987868 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:19:31 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 12, in privet
+    print(result.fullName)
+AttributeError: 'list' object has no attribute 'fullName'
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:19:31 +06)" (scheduled at 2020-03-01 23:19:31.222406+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:19:41.222406+06:00 (in 9.990217 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:19:41 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 12, in privet
+    print(result.fullName)
+AttributeError: 'list' object has no attribute 'fullName'
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:19:41 +06)" (scheduled at 2020-03-01 23:19:41.222406+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:19:51.222406+06:00 (in 9.988009 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:19:51 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 12, in privet
+    print(result.fullName)
+AttributeError: 'list' object has no attribute 'fullName'
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:19:51 +06)" (scheduled at 2020-03-01 23:19:51.222406+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:20:01.222406+06:00 (in 9.977203 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:20:01 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 12, in privet
+    print(result.fullName)
+AttributeError: 'list' object has no attribute 'fullName'
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:20:11.130975+06:00 (in 10.000000 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:20:11 +06)" (scheduled at 2020-03-01 23:20:11.130975+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:20:21.130975+06:00 (in 9.774894 seconds)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:20:21 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 12, in privet
+    print(result.full_name)
+AttributeError: 'list' object has no attribute 'full_name'
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:20:21 +06)" (scheduled at 2020-03-01 23:20:21.130975+06:00)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:20:21 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 12, in privet
+    print(result.full_name)
+AttributeError: 'list' object has no attribute 'full_name'
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:20:31.130975+06:00 (in 9.902774 seconds)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:20:31 +06)" (scheduled at 2020-03-01 23:20:31.130975+06:00)
+ERROR:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:20:31 +06)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\tanya\AppData\Local\Programs\Python\Python37-32\lib\site-packages\apscheduler\executors\base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "C:\Users\tanya\Desktop\FaceRecognation\python project\app\jobs\jobs.py", line 12, in privet
+    print(result.full_name)
+AttributeError: 'list' object has no attribute 'full_name'
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:20:41.130975+06:00 (in 9.959212 seconds)
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:app:Started scheduler
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:21:32.920270+06:00 (in 9.984379 seconds)
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:21:32 +06)" (scheduled at 2020-03-01 23:21:32.920270+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:21:42.920270+06:00 (in 9.978724 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:21:42 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:21:42 +06)" (scheduled at 2020-03-01 23:21:42.920270+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:21:52.920270+06:00 (in 9.996483 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:21:52 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:21:52 +06)" (scheduled at 2020-03-01 23:21:52.920270+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:22:02.920270+06:00 (in 9.997288 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:22:02 +06)" executed successfully
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "privet" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:22:49.168321+06:00 (in 10.000000 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:22:49 +06)" (scheduled at 2020-03-01 23:22:49.168321+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:22:59.168321+06:00 (in 9.979694 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:22:59 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:22:59 +06)" (scheduled at 2020-03-01 23:22:59.168321+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-01 23:23:09.168321+06:00 (in 9.997714 seconds)
+INFO:apscheduler.executors.default:Job "privet (trigger: interval[0:00:10], next run at: 2020-03-01 23:23:09 +06)" executed successfully
