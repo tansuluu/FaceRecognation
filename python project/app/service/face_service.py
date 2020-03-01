@@ -9,6 +9,9 @@ CURRENT_PATH = "C:/Users/tanya/Desktop/FaceRecognation/upload-dir/"
 obama_image = face_recognition.load_image_file("C:/Users/tanya/Desktop/33.jpg")
 obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
 
+ttt = face_recognition.load_image_file("C:/Users/tanya/Desktop/5.jpg")
+ttt_encoding = face_recognition.face_encodings(ttt)[0]
+
 # Load a second sample picture and learn how to recognize it.
 biden_image = face_recognition.load_image_file("C:/Users/tanya/Desktop/6.jpg")
 biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
@@ -16,11 +19,13 @@ biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
 # Create arrays of known face encodings and their names
 known_face_encodings = [
     obama_face_encoding,
+    ttt_encoding,
     biden_face_encoding
 ]
 known_face_names = [
-    "Asema",
-    "Tansuluu"
+    "Zyndanbaeva Asema",
+    "Sultanov Nadyr",
+    "Myrzaeva Tansuluu"
 ]
 
 
@@ -65,7 +70,7 @@ def recognize(file_name, request_id):
             draw.rectangle(((left, bottom - text_height), (right, bottom)), fill=(0, 0, 255), outline=(0, 0, 255))
             draw.text((left + 6, bottom - text_height), name, fill=(255, 255, 255, 255))
             pil_image.save(CURRENT_PATH + "result_" + file_name)
-            save_request_result("result_" + file_name, request_id, int((1 - face_distances[best_match_index]+.1)*100), name, 'com16')
+            save_request_result("result_" + file_name, request_id, int((1 - face_distances[best_match_index]+.15)*100), name, 'com16')
             update_request("SUCCESS", request_id)
             return
 

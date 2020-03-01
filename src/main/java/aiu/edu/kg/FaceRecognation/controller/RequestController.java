@@ -36,9 +36,13 @@ public class RequestController {
     private UserService userService;
 
     @RequestMapping("/requests")
-    public String allRequest(Model model){
+    public String allRequest(Model model, Principal principal){
         model.addAttribute("item", new Request());
-        model.addAttribute("items", requestService.all());
+        if (principal.getName().equals("tmyrzaeva")){
+            model.addAttribute("items", requestService.all());
+        }else
+            model.addAttribute("items", requestService.getAllByUser(userService.findByUsername(principal.getName())));
+
         return "request";
     }
 

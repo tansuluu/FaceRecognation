@@ -3407,3 +3407,46 @@ DEBUG:apscheduler.scheduler:Looking for jobs to run
 DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-02 03:47:43.678155+06:00 (in 9.990491 seconds)
 INFO:apscheduler.executors.default:Running job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 03:47:43 +06)" (scheduled at 2020-03-02 03:47:33.678155+06:00)
 INFO:apscheduler.executors.default:Job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 03:47:43 +06)" executed successfully
+INFO:app:Created App
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:app:Added jobs
+INFO:apscheduler.scheduler:Added job "run_request" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-02 04:15:31.902464+06:00 (in 9.320375 seconds)
+INFO:app:Started scheduler
+INFO:werkzeug: * Restarting with stat
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:15:31 +06)" (scheduled at 2020-03-02 04:15:31.902464+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-02 04:15:41.902464+06:00 (in 9.998163 seconds)
+INFO:apscheduler.executors.default:Job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:15:41 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:15:41 +06)" (scheduled at 2020-03-02 04:15:41.902464+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-02 04:15:51.902464+06:00 (in 9.978628 seconds)
+INFO:apscheduler.executors.default:Job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:15:51 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:15:51 +06)" (scheduled at 2020-03-02 04:15:51.902464+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-02 04:16:01.902464+06:00 (in 9.998444 seconds)
+INFO:apscheduler.executors.default:Job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:16:01 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:16:01 +06)" (scheduled at 2020-03-02 04:16:01.902464+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-02 04:16:11.902464+06:00 (in 9.997529 seconds)
+DEBUG:PIL.PngImagePlugin:STREAM b'IHDR' 16 13
+DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 41 1216
+INFO:apscheduler.executors.default:Job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:16:11 +06)" executed successfully
+INFO:app:Created App
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 726-530-599
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:16:11 +06)" (scheduled at 2020-03-02 04:16:11.902464+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-02 04:16:21.902464+06:00 (in 9.993499 seconds)
+INFO:apscheduler.executors.default:Job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:16:21 +06)" executed successfully
+INFO:werkzeug: * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:16:21 +06)" (scheduled at 2020-03-02 04:16:21.902464+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-02 04:16:31.902464+06:00 (in 9.998063 seconds)
+INFO:apscheduler.executors.default:Job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:16:31 +06)" executed successfully
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:16:31 +06)" (scheduled at 2020-03-02 04:16:31.902464+06:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2020-03-02 04:16:41.902464+06:00 (in 9.996158 seconds)
+INFO:apscheduler.executors.default:Job "run_request (trigger: interval[0:00:10], next run at: 2020-03-02 04:16:41 +06)" executed successfully
