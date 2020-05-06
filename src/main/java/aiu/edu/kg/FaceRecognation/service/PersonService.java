@@ -17,4 +17,16 @@ public class PersonService {
         return personRepository.findAll();
     }
 
+    public Person get(Long id){
+        return personRepository.getOne(id);
+    }
+
+    public void delete(Long id){
+        personRepository.deleteById(id);
+    }
+
+    public Person save(Person person){
+        return personRepository.save(person);
+    }
+
 }
