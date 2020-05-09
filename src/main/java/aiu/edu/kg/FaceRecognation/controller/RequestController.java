@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.security.Principal;
 
 @Controller
+@RequestMapping("/request")
 public class RequestController {
 
 
@@ -33,7 +34,7 @@ public class RequestController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/requests")
+    @RequestMapping("/index")
     public String allRequest(Model model, Principal principal){
         model.addAttribute("item", new Request());
         if (principal.getName().equals("tmyrzaeva")){
@@ -44,7 +45,7 @@ public class RequestController {
         return "request";
     }
     
-    @RequestMapping(value = "/addRequest", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String addRequest(@Valid Request request, @RequestParam("file") MultipartFile file, Model model, Principal principal){
         try {
             storageService.store(file);
@@ -76,9 +77,15 @@ public class RequestController {
                 .body(file);
     }
 
-    @RequestMapping(value = "/view")
+    @RequestMapping(value = "/get")
     public String view(@RequestParam("id")Long id, Model model){
         model.addAttribute("item", requestResultService.getAllByRequest(requestService.getById(id)).get(0));
         return "requestResult";
+    }
+
+    @RequestMapping(value = "delete")
+    public String delete(Long id){
+        requestService.delete(id);
+        return "redirect:/index";
     }
 }

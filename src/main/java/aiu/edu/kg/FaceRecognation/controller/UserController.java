@@ -13,19 +13,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/users")
+    @RequestMapping("/index")
     public String allUsers(Model model){
         model.addAttribute("users", userService.all());
         model.addAttribute("user", new User());
         return "users";
     }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String addUser(@Valid User user, BindingResult bindingResult, Model model){
         User userExists = userService.findByUsername(user.getUsername());
         if (userExists != null) {
@@ -47,10 +48,10 @@ public class UserController {
         return "";
     }
 
-    @RequestMapping(value = "/remove")
+    @RequestMapping(value = "/delete")
     public String delete(@RequestParam("id") Long id){
         userService.devele(id);
-        return "redirect://users";
+        return "redirect:/users";
     }
 
 }
