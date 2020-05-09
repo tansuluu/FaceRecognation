@@ -97,6 +97,10 @@
                             <a th:href="@{/requests}">
                                 <i class="fas fa-chart-bar"></i>Requests</a>
                         </li>
+                        <li sec:authorize="hasAuthority('ADMIN')">
+                            <a th:href="@{/person}">
+                                <i class="fas fa-users"></i>Data base</a>
+                        </li>
                     </ul>
                 </nav>
             </div>

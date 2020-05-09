@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -38,7 +39,18 @@ public class UserController {
         }
         userService.save(user);
         return "redirect:/users";
+    }
 
+    @RequestMapping(value = "/get")
+    public String get(@RequestParam("id") Long id, Model model){
+        model.addAttribute("item",userService.findById(id));
+        return "";
+    }
+
+    @RequestMapping(value = "/remove")
+    public String delete(@RequestParam("id") Long id){
+        userService.devele(id);
+        return "redirect://users";
     }
 
 }
