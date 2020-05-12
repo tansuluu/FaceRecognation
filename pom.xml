@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>aiu.edu.kg</groupId>
 	<artifactId>FaceRecognation</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<name>FaceRecognation</name>
 	<description>Demo project for Spring Boot</description>
@@ -72,8 +72,14 @@
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 			<version>3.0.3.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<build>
+		<finalName>face</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

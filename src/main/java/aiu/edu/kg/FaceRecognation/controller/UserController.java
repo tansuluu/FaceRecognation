@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +23,6 @@ public class UserController {
     @RequestMapping("/index")
     public String allUsers(Model model){
         model.addAttribute("users", userService.all());
-        model.addAttribute("user", new User());
         return "users";
     }
 
@@ -42,10 +42,16 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @RequestMapping(value = "/get")
-    public String get(@RequestParam("id") Long id, Model model){
+    @RequestMapping(value = "/get/{id}")
+    public String get(@PathVariable("id") Long id, Model model){
         model.addAttribute("item",userService.findById(id));
         return "";
+    }
+
+    @RequestMapping(value = "/get")
+    public String get(Model model){
+        model.addAttribute("item", new User());
+        return "modals/userModal";
     }
 
     @RequestMapping(value = "/delete")
