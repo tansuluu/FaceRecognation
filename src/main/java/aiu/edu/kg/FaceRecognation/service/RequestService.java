@@ -33,4 +33,8 @@ public class RequestService {
     public void delete(Long id){
         requestRepository.deleteById(id);
     }
+
+    public void deleteByUser(User user){
+        requestRepository.deleteAll(requestRepository.getAllByUser(user));
+    }
 }

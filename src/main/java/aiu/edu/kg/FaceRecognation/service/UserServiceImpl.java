@@ -21,6 +21,8 @@ public class UserServiceImpl implements UserService {
     private RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private RequestService requestService;
 
     @Override
     public void save(User user) {
@@ -47,6 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(Long id){
+        requestService.deleteByUser(userRepository.getOne(id));
         userRepository.deleteById(id);
     }
 
