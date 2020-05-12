@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(new HashSet<>(Arrays.asList(roleRepository.getByName("USER"))));
+        user.setCreatedDate(new Date());
         userRepository.save(user);
     }
 
@@ -44,7 +46,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void devele(Long id){
+    public void delete(Long id){
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public User update(User user, User userToUpdate){
+        userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setFullName(user.getFullName());
+        userToUpdate.setPosition(user.getPosition());
+        this.save(userToUpdate);
+        return userToUpdate;
     }
 }

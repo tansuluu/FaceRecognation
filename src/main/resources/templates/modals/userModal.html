@@ -10,26 +10,27 @@
         </button>
     </div>
     <div class="modal-body">
-        <form class="login100-form validate-form" th:action="@{/addUser}" method="post" th:object="${item}" enctype="multipart/form-data">
+        <form class="login100-form validate-form" th:action="@{/user/save}" method="post" th:object="${item}" enctype="multipart/form-data">
             <input th:value="${error}" id="error" hidden="hidden">
+            <input th:field="*{id}" type="hidden">
             <div class="form-group">
                 <label class="control-label mb-1">Full name</label>
                 <input  type="text" class="form-control" required="required" th:field="*{fullName}">
             </div>
             <div class="form-group">
                 <label class="control-label mb-1">Login</label>
-                <label style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"   class="validation-message"></label>
-                <input  type="text" class="form-control" required="required" th:field="*{username}">
+                <label style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="validation-message"></label>
+                <input  type="text" class="form-control" required="required" th:field="*{username}" th:readonly="${item.id!=null}">
+            </div>
+            <div class="form-group">
+                <label class="control-label mb-1">Position</label>
+                <label style="color: red" th:if="${#fields.hasErrors('position')}" th:errors="*{position}" class="validation-message"></label>
+                <input  type="text" class="form-control" required="required" th:field="*{position}">
             </div>
             <div class="form-group">
                 <label class="control-label mb-1">Password</label>
                 <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"   class="validation-message"></label>
-                <input  type="password" class="form-control" required="required" th:field="*{password}">
-            </div>
-            <div class="form-group">
-                <label class="control-label mb-1">Password confirm</label>
-                <label th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"   class="validation-message"></label>
-                <input  type="password" class="form-control" required="required" th:field="*{passwordConfirm}">
+                <input  type="password" class="form-control" minlength="5" required="required" th:field="*{password}">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

@@ -275,8 +275,11 @@
                                         <i class="zmdi zmdi-plus"></i> user
                                     </button>
                                 </div>
-                                <div class="table-responsive table--no-card m-b-30">
 
+                                <div class="table-responsive table--no-card m-b-30">
+                                    <div>
+                                        <h4 style="color: red" th:if="${message!=null}" th:text="${message}"></h4>
+                                    </div>
                                 <table width="100%" class="display table table-borderless table-striped table-earning" id="example">
                                     <thead>
                                     <tr>
@@ -290,7 +293,7 @@
                                     <tr th:each="user:${users}">
                                         <td th:text="${user.username}"></td>
                                         <td th:text="${user.fullName}"></td>
-                                        <td class="button"><button th:onclick="'getModel(\'' + @{/user/delete/} + ${user.id} +  '\');'" >Delete</button></td>
+                                        <td class="button"><a th:href="@{/user/delete/} + ${user.id}" >Delete</a></td>
                                         <td class="button"><button th:onclick="'getModel(\'' + @{/user/get/} + ${user.id} +  '\');'" >Update</button></td>
                                     </tr>
                                     </tbody>
@@ -315,7 +318,6 @@
   <script>
       function getModel(url){
           $("#myModal .modal-dialog").html("");
-          console.log(url);
           $("#myModal .modal-dialog").load(url, function () {
               $("#myModal").modal("show");
           });
@@ -334,6 +336,7 @@
     <script th:src="@{/vendor/jquery-3.2.1.min.js}"></script>
     <script th:src="@{/vendor/bootstrap-4.1/popper.min.js}"></script>
     <script th:src="@{/vendor/slick/slick.min.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script th:src="@{/vendor/animsition/animsition.min.js}"></script>
     <script th:src="@{/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js}"></script>
     <script th:src="@{/vendor/counter-up/jquery.waypoints.min.js}"></script>
@@ -344,7 +347,6 @@
     <script th:src="@{/vendor/select2/select2.min.js}"></script>
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/vendor/bootstrap-4.1/bootstrap.min.js}"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>

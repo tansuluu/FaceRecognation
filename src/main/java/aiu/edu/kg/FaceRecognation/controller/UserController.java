@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import javax.validation.Valid;
 
@@ -20,32 +20,31 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    private String message;
+
     @RequestMapping("/index")
     public String allUsers(Model model){
         model.addAttribute("users", userService.all());
+        model.addAttribute("message", message);
+        message=null;
         return "users";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String addUser(@Valid User user, BindingResult bindingResult, Model model){
+    public String addUser(@Valid User user){
         User userExists = userService.findByUsername(user.getUsername());
-        if (userExists != null) {
-            bindingResult
-                    .rejectValue("username", "error.user",
-                            "*There is already a user registered with the login provided");
-        }
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("error", 1);
-            return "users";
-        }
-        userService.save(user);
-        return "redirect:/users";
+        if(user.getId()==null) {
+            if (userExists != null) {
+                message = "*There is already a user registered with the login provided";
+            }else userService.save(user);
+        }else userService.update(user, userExists);
+        return "redirect:/user/index";
     }
 
     @RequestMapping(value = "/get/{id}")
     public String get(@PathVariable("id") Long id, Model model){
         model.addAttribute("item",userService.findById(id));
-        return "";
+        return "modals/userModal";
     }
 
     @RequestMapping(value = "/get")
@@ -54,10 +53,10 @@ public class UserController {
         return "modals/userModal";
     }
 
-    @RequestMapping(value = "/delete")
-    public String delete(@RequestParam("id") Long id){
-        userService.devele(id);
-        return "redirect:/users";
+    @RequestMapping(value = "/delete/{id}")
+    public String delete(@PathVariable("id") Long id){
+        userService.delete(id);
+        return "redirect:/user/index";
     }
 
 }

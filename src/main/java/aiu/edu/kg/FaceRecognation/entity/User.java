@@ -22,8 +22,7 @@ public class User extends BaseEntity{
 
     private String password;
 
-    @Transient
-    private String passwordConfirm;
+    private String position;
 
     @ManyToMany
     private Set<Role> roles;
