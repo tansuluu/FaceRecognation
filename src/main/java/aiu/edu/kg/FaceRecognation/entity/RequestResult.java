@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,17 +18,10 @@ public class RequestResult extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "request_id", nullable = false)
-    private Request request;
-
-    private String file_name;
-    private String fullName;
-    private String groupClass;
-
     private double percentage;
 
-    public String getImage(){
-        return "/image/"+file_name;
-    }
+    @OneToMany
+    @JoinColumn(name = "people", nullable = false)
+    private List<Person> people;
+
 }

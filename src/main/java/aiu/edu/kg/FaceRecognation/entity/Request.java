@@ -18,7 +18,6 @@ public class Request extends BaseEntity {
     private Long id;
 
     private String title;
-    private String fileName;
 
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)

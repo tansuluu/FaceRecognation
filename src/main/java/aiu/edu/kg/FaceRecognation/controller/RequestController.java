@@ -16,12 +16,13 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/request")
 public class RequestController {
 
-
+    private final String ADMIN = "ADMIN";
     @Autowired
     private RequestService requestService;
 
@@ -37,16 +38,15 @@ public class RequestController {
     @RequestMapping("/index")
     public String allRequest(Model model, Principal principal){
         model.addAttribute("item", new Request());
-        if (principal.getName().equals("tmyrzaeva")){
+        if (userService.findByUsername(principal.getName()).getRoles().stream().filter(r-> r.getName().equals(ADMIN)).count() > 0){
             model.addAttribute("items", requestService.all());
         }else
             model.addAttribute("items", requestService.getAllByUser(userService.findByUsername(principal.getName())));
-
         return "request";
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String addRequest(@Valid Request request, @RequestParam("file") MultipartFile file, Model model, Principal principal){
+    public String addRequest(@Valid Request request, @RequestParam("file") List<MultipartFile> files, Model model, Principal principal){
         try {
             storageService.store(file);
             request.setFileName(file.getOriginalFilename());
@@ -54,38 +54,31 @@ public class RequestController {
             request.setUser(userService.findByUsername(principal.getName()));
             requestService.save(request);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             model.addAttribute("message", "FAIL to upload " + file.getOriginalFilename() + "!");
             model.addAttribute("items", requestService.all());
             return "requests";
         }
-        return  "redirect:/requests";
+        return  "redirect:/request/index";
     }
 
     @GetMapping("/image/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable String filename) {
         Resource file = storageService.loadFile(filename);
-        String mimeType;
-        try {
-            mimeType = Files.probeContentType(file.getFile().toPath());
-        } catch (IOException e) {
-            System.out.println("Error while loading file " + e);
-        }
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "filename=\"" + file.getFilename() + "\"")
                 .body(file);
     }
 
     @RequestMapping(value = "/get")
-    public String view(@RequestParam("id")Long id, Model model){
+    public String view(@RequestParam("id") Long id, Model model){
         model.addAttribute("item", requestResultService.getAllByRequest(requestService.getById(id)).get(0));
         return "requestResult";
     }
 
     @RequestMapping(value = "delete")
-    public String delete(Long id){
+    public String delete(@RequestParam("id") Long id){
         requestService.delete(id);
-        return "redirect:/index";
+        return "redirect:/request/index";
     }
 }

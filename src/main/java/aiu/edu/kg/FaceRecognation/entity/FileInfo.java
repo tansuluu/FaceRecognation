@@ -20,12 +20,19 @@ public class FileInfo extends BaseEntity {
     @JoinColumn(name = "request_id", nullable = false)
     private Request request;
 
+    @ManyToOne
+    @JoinColumn(name = "request_id", nullable = false)
+    private RequestResult requestResult;
+
     @Column(name = "file_size")
     private String fileSize;
 
     @Column(name = "file_type")
     private String fileType;
 
-    @Column(name = "path", nullable = false)
-    private String path;
-}
+    @Column(name = "file_name", nullable = false)
+    private String fileName;
+
+    public String getImage(){
+        return "/image/"+fileName;
+    }}

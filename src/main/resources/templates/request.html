@@ -167,13 +167,16 @@
                                     </button>
                                 </div>
                                 <div class="table-responsive table--no-card m-b-30">
-
+                                    <div>
+                                        <h4 style="color: red" th:if="${message!=null}" th:text="${message}"></h4>
+                                    </div>
                                     <table width="100%" class="display table table-borderless table-striped table-earning" id="example">
                                         <thead>
                                         <tr>
                                             <th>Title</th>
                                             <th>Status</th>
                                             <th>User</th>
+                                            <th></th>
                                             <th></th>
                                         </tr>
                                         </thead>
@@ -183,6 +186,7 @@
                                             <td th:text="${item.status.name()}"></td>
                                             <td th:text="${item.user.fullName}"></td>
                                             <td class="button"><a th:if="${item.status.name()}=='SUCCESS'" th:href="@{/view(id=${item.id})}">View</a></td>
+                                            <td class="button"><a th:if="${item.status.name()}=='NEW'" th:href="@{/delete(id=${item.id})}">Delete</a></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -216,7 +220,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-1">File</label>
-                            <input  type="file"  name="file" class="form-control" required="required">
+                            <input type="file"  name="file" class="form-control" required="required" multiple="multiple" accept="image/jpeg,image/jpg,image/png,image/gif">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
