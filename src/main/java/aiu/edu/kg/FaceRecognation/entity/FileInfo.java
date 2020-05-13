@@ -2,6 +2,7 @@ package aiu.edu.kg.FaceRecognation.entity;
 
 import aiu.edu.kg.FaceRecognation.base.BaseEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Table(name = "file_info")
+@NoArgsConstructor
 public class FileInfo extends BaseEntity {
 
     @Id
@@ -33,6 +35,14 @@ public class FileInfo extends BaseEntity {
     @Column(name = "file_name", nullable = false)
     private String fileName;
 
+    public FileInfo(Request request, String fileSize, String fileType) {
+        this.request = request;
+        this.fileSize = fileSize;
+        this.fileType = fileType;
+    }
+
     public String getImage(){
         return "/image/"+fileName;
     }}
+
+
