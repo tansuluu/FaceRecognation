@@ -148,7 +148,7 @@
             </header>
 
         <!-- PAGE CONTAINER-->
-        <div class="page-container">
+        <!--<div class="page-container">-->
             <!-- MAIN CONTENT-->
             <div class="main-content" style="padding-top: 100px">
                 <div class="section__content section__content--p30">
@@ -156,7 +156,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <button type="button" class="au-btn au-btn-icon au-btn--blue"  th:onclick="'getModel(\'' + @{/user/get} +  '\');'" style="line-height: 30px; font-size: 12px">
+                                    <button type="button" class="au-btn au-btn-icon au-btn--blue"  th:onclick="'getModel(\'' + @{/person/get} +  '\');'" style="line-height: 30px; font-size: 12px">
                                         <i class="zmdi zmdi-plus"></i> user
                                     </button>
                                 </div>
@@ -172,14 +172,16 @@
                                         <th>Full name</th>
                                         <th></th>
                                         <th></th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="item:${items}">
-                                        <td th:text="${user.username}"></td>
-                                        <td th:text="${user.fullName}"></td>
-                                        <td class="button"><a th:href="@{/user/delete/} + ${user.id}" >Delete</a></td>
-                                        <td class="button"><button th:onclick="'getModel(\'' + @{/user/get/} + ${user.id} +  '\');'" >Update</button></td>
+                                        <td th:text="${item.surname}"></td>
+                                        <td th:text="${item.name}"></td>
+                                        <td th:text="${item.patronymic}"></td>
+                                        <td class="button"><a th:href="@{/person/delete/} + ${item.id}" >Delete</a></td>
+                                        <td class="button"><button th:onclick="'getModel(\'' + @{/person/get/} + ${item.id} +  '\');'" >Update</button></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -188,7 +190,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            <!--</div>-->
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
         </div>
@@ -208,9 +210,6 @@
           });
       }
       $(document).ready(function () {
-            if($("#error").val()==1){
-                $('#basicExampleModal').modal('show');
-            }
             $("#example").DataTable({
                 "scrollX":"500px",
                 "scrollCollapse": true

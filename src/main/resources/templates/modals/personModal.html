@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New user</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="login100-form validate-form" th:action="@{/person/save}" method="post" th:object="${item}" enctype="multipart/form-data">
+            <input th:value="${error}" id="error" hidden="hidden">
+            <input th:field="*{id}" type="hidden">
+            <div class="form-group">
+                <label class="control-label mb-1">Surname</label>
+                <input  type="text" class="form-control" required="required" th:field="*{surname}">
+            </div>
+            <div class="form-group">
+                <label class="control-label mb-1">Name</label>
+                <input  type="text" class="form-control" required="required" th:field="*{name}">
+            </div>
+            <div class="form-group">
+                <label class="control-label mb-1">Patronymic</label>
+                <input  type="text" class="form-control"  th:field="*{patronymic}">
+            </div>
+            <div class="form-group">
+                <label class="control-label mb-1">Position</label>
+                <select id="department" class="form-control" required="required" th:field="*{personPosition}">
+                    <option th:each="position : ${T(aiu.edu.kg.FaceRecognation.enums.PersonPosition).values()}"
+                            th:value="${position}"
+                            th:text="${position}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label mb-1">Faculty</label>
+                <label style="color: red" th:if="${#fields.hasErrors('faculty')}" th:errors="*{faculty}" class="validation-message"></label>
+                <input  type="text" class="form-control" th:field="*{faculty}">
+            </div>
+            <div class="form-group">
+                <label class="control-label mb-1">Group name</label>
+                <label style="color: red" th:if="${#fields.hasErrors('groupName')}" th:errors="*{groupName}" class="validation-message"></label>
+                <input  type="text" class="form-control" th:field="*{groupName}">
+            </div>
+            <div class="form-group">
+                <label class="control-label mb-1">Image</label>
+                <input type="file" name="file" class="form-control" required="required" accept="image/jpeg,image/jpg,image/png,image/gif">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
