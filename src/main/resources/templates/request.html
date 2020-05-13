@@ -31,6 +31,8 @@
 
     <!-- Main CSS-->
     <link th:href="@{/css/theme.css}" rel="stylesheet" media="all">
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="all">
+
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 
 </head>
@@ -120,7 +122,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="images/icon/images.png" />
+                                            <img th:src="@{/images/icon/images.png}" />
                                         </div>
                                         <div class="content" th:if="${#request.userPrincipal !=null}">
                                             <a class="js-acc-btn" href="#" th:text="${#request.userPrincipal.name}">john doe</a>
@@ -129,7 +131,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="images/icon/images.png" />
+                                                        <img th:src="@{/images/icon/images.png}"/>
                                                     </a>
                                                 </div>
                                                 <div class="content" th:if="${#request.userPrincipal !=null}">
@@ -152,9 +154,9 @@
             </header>
             <!-- HEADER DESKTOP-->
             <!-- MAIN CONTENT-->
-            <div class="page-container">
+            <!--<div class="page-container">-->
             <div class="main-content" style="padding-top: 100px">
-                <h4 th:if="${message!=null}" th:text="${message}"></h4>
+                <!--<h4 th:if="${message!=null}" th:text="${message}"></h4>-->
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
@@ -189,7 +191,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            <!--</div>-->
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
         </div>
