@@ -175,7 +175,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="user:${users}">
+                                    <tr th:each="item:${items}">
                                         <td th:text="${user.username}"></td>
                                         <td th:text="${user.fullName}"></td>
                                         <td class="button"><a th:href="@{/user/delete/} + ${user.id}" >Delete</a></td>
