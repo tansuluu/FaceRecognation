@@ -22,9 +22,6 @@ public class RequestController {
     private RequestService requestService;
 
     @Autowired
-    private RequestResultService requestResultService;
-
-    @Autowired
     private UserService userService;
 
     @Autowired
@@ -50,9 +47,11 @@ public class RequestController {
         return  "redirect:/request/index";
     }
 
-    @RequestMapping(value = "/get")
+    @RequestMapping(value = "/view")
     public String view(@RequestParam("id") Long id, Model model){
-        model.addAttribute("item", requestResultService.getAllByRequest(requestService.getById(id)).get(0));
+        Request request = requestService.getById(id);
+        model.addAttribute("item", request);
+        model.addAttribute("files", fileInfoService.findAllByRequest(request));
         return "requestResult";
     }
 

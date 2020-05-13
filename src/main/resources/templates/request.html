@@ -185,8 +185,8 @@
                                             <td th:text="${item.title}"></td>
                                             <td th:text="${item.status.name()}"></td>
                                             <td th:text="${item.user.fullName}"></td>
-                                            <td class="button"><a th:if="${item.status.name()}=='SUCCESS'" th:href="@{/view(id=${item.id})}">View</a></td>
-                                            <td class="button"><a th:if="${item.status.name()}=='NEW'" th:href="@{/delete(id=${item.id})}">Delete</a></td>
+                                            <td class="button"><a th:href="@{/request/view(id=${item.id})}">View</a></td>
+                                            <td class="button"><a th:if="${item.status.name()}=='NEW'" th:href="@{/request/delete(id=${item.id})}">Delete</a></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -213,7 +213,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="login100-form validate-form" th:action="@{/addRequest}" method="post" th:object="${item}" enctype="multipart/form-data">
+                    <form class="login100-form validate-form" th:action="@{/request/save}" method="post" th:object="${item}" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="control-label mb-1">Title</label>
                             <input  type="text" class="form-control" required="required" th:field="*{title}">
@@ -235,9 +235,6 @@
 
     <script>
         $(document).ready(function () {
-            if($("#error").val()==1){
-                $('#basicExampleModal').modal('show');
-            }
             $("#example").DataTable({
                 "scrollX":"500px",
                 "scrollCollapse": true,

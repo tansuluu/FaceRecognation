@@ -14,8 +14,4 @@ public class RequestResultService {
     @Autowired
     private RequestResultRepository requestResultRepository;
 
-    public List<RequestResult> getAllByRequest(Request request){
-        return requestResultRepository.getAllByRequest(request);
-    }
-
 }

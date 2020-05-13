@@ -21,24 +21,22 @@ public class StorageService {
     Logger log = LoggerFactory.getLogger(this.getClass().getName());
     public static final Path rootLocation = Paths.get("upload-dir");
 
-    public void store(MultipartFile file){
+    public void store(MultipartFile file, String name){
         try {
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(name));
         } catch (Exception e) {
-            log.error("FAIL! Such file already exist", e);
+            log.error("FAIL! in store ", e);
         }
     }
 
     public Resource loadFile(String filename) {
         try {
-            System.out.println(filename);
             Path file = rootLocation.resolve(filename);
             Resource resource = new UrlResource(file.toUri());
             if(resource.exists() || resource.isReadable()) {
                 return resource;
             }else{
                 log.error("FAIL! could not find file");
-                return resource;
             }
         } catch (MalformedURLException e) {
             log.error("Error while loading file", e);

@@ -23,7 +23,7 @@ public class FileInfo extends BaseEntity {
     private Request request;
 
     @ManyToOne
-    @JoinColumn(name = "request_id", nullable = false)
+    @JoinColumn(name = "request_result_id")
     private RequestResult requestResult;
 
     @Column(name = "file_size")
@@ -32,7 +32,7 @@ public class FileInfo extends BaseEntity {
     @Column(name = "file_type")
     private String fileType;
 
-    @Column(name = "file_name", nullable = false)
+    @Column(name = "file_name")
     private String fileName;
 
     public FileInfo(Request request, String fileSize, String fileType) {
