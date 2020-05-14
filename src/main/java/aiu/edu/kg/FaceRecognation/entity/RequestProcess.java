@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Setter
 @Getter
@@ -22,12 +23,11 @@ public class RequestProcess extends BaseEntity {
     @JoinColumn(name = "request_id", nullable = false)
     private Request request;
 
-    @ManyToOne
-    @JoinColumn(name = "request_result_id")
-    private RequestResult requestResult;
-
     @Column(name = "file_name")
     private String fileName;
+
+    @OneToMany(mappedBy="requestProcess", cascade=CascadeType.ALL)
+    private List<RequestResult> requestResults;
 
     public RequestProcess(Request request) {
         this.request = request;

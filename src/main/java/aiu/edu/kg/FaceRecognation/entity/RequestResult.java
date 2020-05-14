@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -20,7 +19,14 @@ public class RequestResult extends BaseEntity {
 
     private double percentage;
 
-    @OneToMany(mappedBy = "requestResult", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private List<Person> people;
+    private String fileName;
+
+    @ManyToOne
+    @JoinColumn(name = "request_process_id")
+    private RequestProcess requestProcess;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id", nullable = false)
+    private Person person;
 
 }

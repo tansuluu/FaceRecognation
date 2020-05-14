@@ -32,10 +32,6 @@ public class Person extends BaseEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "request_result_id")
-    private RequestResult requestResult;
-
     @Column(name = "removed_date")
     public Date removedDate;
 

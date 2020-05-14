@@ -47,6 +47,7 @@ public class PersonService {
                 String fileName = FILE+person.getId()+ "." + FilenameUtils.getExtension(file.getOriginalFilename());
                 storageService.store(file, fileName);
                 personExist.setFileName(fileName);
+                personExist.setFace_encodings(null);
             }
             this.personRepository.save(personExist);
         }else {
