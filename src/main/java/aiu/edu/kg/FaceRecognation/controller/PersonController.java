@@ -30,7 +30,7 @@ public class PersonController {
         return "person";
     }
 
-    @RequestMapping("/get{id}")
+    @RequestMapping("/get/{id}")
     public String get(@PathVariable("id")Long id, Model model){
         model.addAttribute("item", personService.get(id));
         return "modals/personModal";
@@ -44,16 +44,16 @@ public class PersonController {
 
 
     @RequestMapping("/save")
-    public String save(@Valid Person person, @RequestParam("file") MultipartFile file, Model model, Principal principal){
+    public String save(@Valid Person person, @RequestParam("file") MultipartFile file, Principal principal){
         person.setUser(userService.findByUsername(principal.getName()));
         personService.save(person, file);
-        return "redirect:/request/index";
+        return "redirect:/person/index";
     }
 
-    @RequestMapping("/delete")
-    public String delete(@RequestParam("id")Long id){
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable("id")Long id){
         personService.delete(id);
-        return "redirect:/index";
+        return "redirect:/person/index";
     }
 
 

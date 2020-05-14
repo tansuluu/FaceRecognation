@@ -21,7 +21,7 @@ public class RequestResult extends BaseEntity {
     private double percentage;
 
     @OneToMany
-    @JoinColumn(name = "people", nullable = false)
+    @JoinColumn(name = "people")
     private List<Person> people;
 
 }

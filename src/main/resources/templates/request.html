@@ -173,10 +173,9 @@
                                     <table width="100%" class="display table table-borderless table-striped table-earning" id="example">
                                         <thead>
                                         <tr>
-                                            <th>Title</th>
+                                            <th><a th:href="@{/request/view(id=${item.id})}">Title</a></th>
                                             <th>Status</th>
                                             <th>User</th>
-                                            <th></th>
                                             <th></th>
                                         </tr>
                                         </thead>
@@ -185,7 +184,6 @@
                                             <td th:text="${item.title}"></td>
                                             <td th:text="${item.status.name()}"></td>
                                             <td th:text="${item.user.fullName}"></td>
-                                            <td class="button"><a th:href="@{/request/view(id=${item.id})}">View</a></td>
                                             <td class="button"><a th:if="${item.status.name()}=='NEW'" th:href="@{/request/delete(id=${item.id})}">Delete</a></td>
                                         </tr>
                                         </tbody>

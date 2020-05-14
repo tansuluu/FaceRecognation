@@ -168,18 +168,28 @@
                                 <table width="100%" class="display table table-borderless table-striped table-earning" id="example">
                                     <thead>
                                     <tr>
-                                        <th>Login</th>
-                                        <th>Full name</th>
-                                        <th></th>
+                                        <th>Image</th>
+                                        <th>Surname</th>
+                                        <th>Name</th>
+                                        <th>Patronymic</th>
+                                        <th>Position</th>
+                                        <th>Faculty</th>
+                                        <th>Group</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="item:${items}">
+                                        <td>
+                                            <img onclick="showIt(this.src)" th:src="@{${item.getImage()}}" style="max-width:50%"/>
+                                        </td>
                                         <td th:text="${item.surname}"></td>
                                         <td th:text="${item.name}"></td>
                                         <td th:text="${item.patronymic}"></td>
+                                        <td th:text="${item.personPosition.name()}"></td>
+                                        <td th:text="${item.faculty}"></td>
+                                        <td th:text="${item.groupName}"></td>
                                         <td class="button"><a th:href="@{/person/delete/} + ${item.id}" >Delete</a></td>
                                         <td class="button"><button th:onclick="'getModel(\'' + @{/person/get/} + ${item.id} +  '\');'" >Update</button></td>
                                     </tr>
@@ -201,7 +211,20 @@
         <div class="modal-dialog">
         </div>
     </div>
-
+    <div id="imageModal" style="overflow: auto" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img class="modal-content" id="img01"/>
+                </div>
+            </div>
+        </div>
+    </div>
   <script>
       function getModel(url){
           $("#myModal .modal-dialog").html("");
@@ -209,6 +232,12 @@
               $("#myModal").modal("show");
           });
       }
+      function showIt(url){
+          var modalImg = document.getElementById("img01");
+          modalImg.src = url;
+          $('#imageModal').modal('show');
+      }
+
       $(document).ready(function () {
             $("#example").DataTable({
                 "scrollX":"500px",

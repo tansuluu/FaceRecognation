@@ -34,7 +34,6 @@
         }
 
         .container img {
-            margin: 100px;
             transition: transform 0.25s ease;
             cursor: zoom-in;
         }
@@ -184,10 +183,10 @@
                                     <tbody>
                                     <tr th:each="file:${files}">
                                         <td>
-                                            <div class="container" style="max-width:30%">
+                                            <div class="container">
                                                 <input type="checkbox" id="zoomCheck">
                                                 <label for="zoomCheck">
-                                                    <img th:src="@{${file.getImage()}}"/>
+                                                    <img th:src="@{${file.getImage()}}" style="max-width:50%"/>
                                                 </label>
                                             </div>
                                         </td>
