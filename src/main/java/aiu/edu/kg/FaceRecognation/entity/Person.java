@@ -1,6 +1,7 @@
 package aiu.edu.kg.FaceRecognation.entity;
 
 import aiu.edu.kg.FaceRecognation.base.BaseEntity;
+import aiu.edu.kg.FaceRecognation.enums.Gender;
 import aiu.edu.kg.FaceRecognation.enums.PersonPosition;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,11 +23,17 @@ public class Person extends BaseEntity {
     private String groupName;
     private String faculty;
     private String fileName;
+
     @Column(columnDefinition="blob")
     private String face_encodings;
+
     @Column(name = "person_position", nullable = false)
     @Enumerated(EnumType.STRING)
     private PersonPosition personPosition;
+
+    @Column(name = "gender", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

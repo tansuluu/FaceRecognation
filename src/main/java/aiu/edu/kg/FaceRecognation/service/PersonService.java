@@ -43,6 +43,7 @@ public class PersonService {
             personExist.setPatronymic(person.getPatronymic());
             personExist.setPersonPosition(person.getPersonPosition());
             personExist.setFaculty(person.getFaculty());
+            personExist.setGender(person.getGender());
             if (!file.isEmpty()){
                 String fileName = FILE+person.getId()+ "." + FilenameUtils.getExtension(file.getOriginalFilename());
                 storageService.store(file, fileName);
