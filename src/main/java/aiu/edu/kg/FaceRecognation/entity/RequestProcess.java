@@ -10,9 +10,9 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Entity
-@Table(name = "file_info")
+@Table(name = "request_process")
 @NoArgsConstructor
-public class FileInfo extends BaseEntity {
+public class RequestProcess extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,19 +26,11 @@ public class FileInfo extends BaseEntity {
     @JoinColumn(name = "request_result_id")
     private RequestResult requestResult;
 
-    @Column(name = "file_size")
-    private String fileSize;
-
-    @Column(name = "file_type")
-    private String fileType;
-
     @Column(name = "file_name")
     private String fileName;
 
-    public FileInfo(Request request, String fileSize, String fileType) {
+    public RequestProcess(Request request) {
         this.request = request;
-        this.fileSize = fileSize;
-        this.fileType = fileType;
     }
 
     public String getImage(){

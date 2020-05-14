@@ -1,6 +1,6 @@
 package aiu.edu.kg.FaceRecognation.repository;
 
-import aiu.edu.kg.FaceRecognation.entity.FileInfo;
+import aiu.edu.kg.FaceRecognation.entity.RequestProcess;
 import aiu.edu.kg.FaceRecognation.entity.Request;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FileInfoRepository extends JpaRepository<FileInfo, Long> {
+public interface FileInfoRepository extends JpaRepository<RequestProcess, Long> {
 
-    List<FileInfo> findAllByRequest(Request request);
+    List<RequestProcess> findAllByRequest(Request request);
 }

@@ -20,8 +20,7 @@ public class RequestResult extends BaseEntity {
 
     private double percentage;
 
-    @OneToMany
-    @JoinColumn(name = "people")
+    @OneToMany(mappedBy = "requestResult", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Person> people;
 
 }
