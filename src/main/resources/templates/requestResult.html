@@ -171,9 +171,9 @@
                         <div class="col-md-12">
                             <div class="table-responsive table--no-card m-b-30">
                                 <table width="100%" class="display table table-borderless table-striped table-earning" id="example">
-                                    <h3 th:text="${item.title}"></h3>
-                                    <h3 th:text="${item.user.fullName}"></h3>
-                                    <h3 th:text="${item.status.name()}"></h3>
+                                    <h3 th:text="'Title: ' + ${item.title}"></h3>
+                                    <h3 th:text="'Author: ' + ${item.user.fullName}"></h3>
+                                    <h3 th:text="'Status:' + ${item.status.name()}"></h3>
                                     <thead>
                                     <tr>
                                         <th></th>

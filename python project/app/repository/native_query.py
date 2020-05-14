@@ -13,12 +13,11 @@ def get_request():
     return result
 
 
-def save_request_result(file_name, id, percentage,name, group_cl):
+def save_request_result(file_name, process_id, percentage, person_id):
     from app import db
-    query = 'insert into request_result(CREATED_DATE, file_name, request_id, percentage) ' \
-            'values(current_date ,%s, %s, %s, %s, %s)'
-    db.engine.execute(query, (file_name, id, str(percentage),name, group_cl))
-    id = db.engine.connection.insert_id()
+    query = 'insert into request_result(CREATED_DATE, file_name, request_process_id, percentage, person_id) ' \
+            'values(current_date ,%s, %s, %s, %s)'
+    db.engine.execute(query, (file_name, process_id, str(percentage), person_id))
     db.session.close()
 
 
@@ -49,7 +48,7 @@ def get_people_by_id(id):
 
 def get_request_process(request_id):
     from app import db
-    query = 'SELECT * FROM request_process where id = %s order by created_date desc'
+    query = 'SELECT * FROM request_process where request_id = %s order by created_date desc'
     result = db.engine.execute(query, (request_id)).fetchall()
     db.session.close()
     return result

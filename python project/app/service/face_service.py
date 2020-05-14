@@ -1,4 +1,3 @@
-import cv2
 import face_recognition
 from PIL import Image, ImageDraw
 import numpy as np
@@ -6,15 +5,6 @@ import numpy as np
 from app.repository.native_query import save_request_result, update_request, get_request_process, get_all_people
 
 directory = "../upload-dir/"
-
-
-# known_face_encodings = [ ]
-# known_face_names = [
-#     "Zyndanbaeva Asema",
-#     "Sultanov Nadyr",
-#     "Myrzaeva Tansuluu"
-# ]
-
 
 def recognize(request_id):
     request_processes = get_request_process(request_id)
@@ -44,9 +34,9 @@ def recognize(request_id):
             # Or instead, use the known face with the smallest distance to the new face
             face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
             best_match_index = np.argmin(face_distances)
-            if matches[best_match_index] and face_distances[best_match_index] < .1:
+            if matches[best_match_index]:
                 name = known_face_names[best_match_index]
-
+                person_id = known_face_id[best_match_index]
                 # Draw a box around the face using the Pillow module
                 draw.rectangle(((left, top), (right, bottom)), outline=(0, 0, 255))
 
@@ -55,11 +45,13 @@ def recognize(request_id):
                 draw.rectangle(((left, bottom - text_height), (right, bottom)), fill=(0, 0, 255), outline=(0, 0, 255))
                 draw.text((left + 6, bottom - text_height), name, fill=(255, 255, 255, 255))
                 pil_image.save(directory + "result_" + process.file_name)
-                save_request_result("result_" + file_name, request_id, int((1 - face_distances[best_match_index]+.15)*100), name, 'com16')
-                update_request("SUCCESS", request_id)
-                return
 
-        update_request("UNKNOWN", request_id)
+                result = int((1 - face_distances[best_match_index]+.15)*100)
+                if result > 100:
+                    result = 99
+                save_request_result("result_" + process.file_name, process.id, result, person_id)
+
+        update_request("FINISHED", request_id)
 
 
 def get_known_faces():
