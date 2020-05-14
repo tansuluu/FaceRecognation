@@ -10,7 +10,7 @@ def request_process():
         return
     update_request("IN_PROGRESS", request[0].id)
     print("Face recognition started for " + str(request[0].id))
-    recognize(request[0].file_name, request[0].id)
+    recognize(request[0].fileName, request[0].id)
     print("Face recognition finished for " + str(request[0].id))
     # except:
     #     print("Error occurred in request_process")

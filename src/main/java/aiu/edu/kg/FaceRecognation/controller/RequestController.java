@@ -25,7 +25,7 @@ public class RequestController {
     private UserService userService;
 
     @Autowired
-    private FileInfoService fileInfoService;
+    private RequestProcessService requestProcessService;
 
     @RequestMapping("/index")
     public String allRequest(Model model, Principal principal){
@@ -42,7 +42,7 @@ public class RequestController {
         request.setUser(userService.findByUsername(principal.getName()));
         request = requestService.save(request);
         for(MultipartFile file : files) {
-            fileInfoService.save(request, file);
+            requestProcessService.save(request, file);
         }
         return  "redirect:/request/index";
     }
@@ -51,7 +51,7 @@ public class RequestController {
     public String view(@RequestParam("id") Long id, Model model){
         Request request = requestService.getById(id);
         model.addAttribute("item", request);
-        model.addAttribute("files", fileInfoService.findAllByRequest(request));
+        model.addAttribute("files", requestProcessService.findAllByRequest(request));
         return "requestResult";
     }
 

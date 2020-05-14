@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FileInfoRepository extends JpaRepository<RequestProcess, Long> {
+public interface RequestProcessRepository extends JpaRepository<RequestProcess, Long> {
 
     List<RequestProcess> findAllByRequest(Request request);
 }

@@ -5,28 +5,28 @@ import numpy as np
 
 from app.repository.native_query import save_request_result, update_request
 
-CURRENT_PATH = "C:/Users/tanya/Desktop/FaceRecognation/upload-dir/"
-obama_image = face_recognition.load_image_file("C:/Users/tanya/Desktop/33.jpg")
-obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
-
-ttt = face_recognition.load_image_file("C:/Users/tanya/Desktop/5.jpg")
-ttt_encoding = face_recognition.face_encodings(ttt)[0]
-
-# Load a second sample picture and learn how to recognize it.
-biden_image = face_recognition.load_image_file("C:/Users/tanya/Desktop/6.jpg")
-biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
-
-# Create arrays of known face encodings and their names
-known_face_encodings = [
-    obama_face_encoding,
-    ttt_encoding,
-    biden_face_encoding
-]
-known_face_names = [
-    "Zyndanbaeva Asema",
-    "Sultanov Nadyr",
-    "Myrzaeva Tansuluu"
-]
+# CURRENT_PATH = "C:/Users/tanya/Desktop/FaceRecognation/upload-dir/"
+# obama_image = face_recognition.load_image_file("C:/Users/tanya/Desktop/33.jpg")
+# obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
+#
+# ttt = face_recognition.load_image_file("C:/Users/tanya/Desktop/5.jpg")
+# ttt_encoding = face_recognition.face_encodings(ttt)[0]
+#
+# # Load a second sample picture and learn how to recognize it.
+# biden_image = face_recognition.load_image_file("C:/Users/tanya/Desktop/6.jpg")
+# biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
+#
+# # Create arrays of known face encodings and their names
+# known_face_encodings = [
+#     obama_face_encoding,
+#     ttt_encoding,
+#     biden_face_encoding
+# ]
+# known_face_names = [
+#     "Zyndanbaeva Asema",
+#     "Sultanov Nadyr",
+#     "Myrzaeva Tansuluu"
+# ]
 
 
 def recognize(file_name, request_id):

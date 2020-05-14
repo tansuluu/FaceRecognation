@@ -22,6 +22,7 @@ public class Person extends BaseEntity {
     private String groupName;
     private String faculty;
     private String fileName;
+    @Column(columnDefinition="blob")
     private String face_encodings;
     @Column(name = "person_position", nullable = false)
     @Enumerated(EnumType.STRING)

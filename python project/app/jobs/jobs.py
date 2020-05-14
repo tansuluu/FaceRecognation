@@ -3,6 +3,7 @@ import datetime
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
+from app.service.person_service import start_process_person
 from app.service.request_service import request_process
 
 
@@ -14,8 +15,13 @@ def privet():
     db.session.close()
     print(result[0].full_name)
 
+
 def run_request():
     request_process()
+
+
+def process_person():
+    start_process_person()
 
 
 def run_schedule():
@@ -23,7 +29,8 @@ def run_schedule():
 
     if not app.debug:
         scheduler = BackgroundScheduler()
-        scheduler.add_job(run_request, 'interval', seconds=10, replace_existing=True, id='verify_new_subscribers')
+        scheduler.add_job(run_request, 'interval', seconds=20, replace_existing=True, id='verify_new_subscribers')
+        scheduler.add_job(process_person, 'interval', seconds=20, replace_existing=True, id='process_person')
 
         app.logger.info("Added jobs")
         scheduler.start()
