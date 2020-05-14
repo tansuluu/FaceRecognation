@@ -51,7 +51,7 @@ public class RequestController {
     public String view(@RequestParam("id") Long id, Model model){
         Request request = requestService.getById(id);
         model.addAttribute("item", request);
-        model.addAttribute("files", requestProcessService.findAllByRequest(request));
+        model.addAttribute("processes", requestProcessService.findAllByRequest(request));
         return "requestResult";
     }
 

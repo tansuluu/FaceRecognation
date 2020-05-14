@@ -28,21 +28,6 @@
     <link th:href="@{/css/style.css}" rel="stylesheet" media="all">
 
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <style>
-        input[type=checkbox] {
-            display: none;
-        }
-
-        .container img {
-            transition: transform 0.25s ease;
-            cursor: zoom-in;
-        }
-
-        input[type=checkbox]:checked ~ label > img {
-            transform: scale(2);
-            cursor: zoom-out;
-        }
-    </style>
 </head>
 
 <body class="animsition">
@@ -165,35 +150,36 @@
         <!--<div class="page-container">-->
         <div class="main-content" style="padding-top: 100px">
             <!--<h4 th:if="${message!=null}" th:text="${message}"></h4>-->
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="table-responsive table--no-card m-b-30">
-                                <table width="100%" class="display table table-borderless table-striped table-earning" id="example">
-                                    <h3 th:text="'Title: ' + ${item.title}"></h3>
-                                    <h3 th:text="'Author: ' + ${item.user.fullName}"></h3>
-                                    <h3 th:text="'Status:' + ${item.status.name()}"></h3>
-                                    <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="file:${files}">
-                                        <td>
-                                            <div class="container">
-                                                <input type="checkbox" id="zoomCheck">
-                                                <label for="zoomCheck">
-                                                    <img th:src="@{${file.getImage()}}" style="max-width:50%"/>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>More</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                <div class="row" th:each="process:${processes}">
+                    <div class="card mb-12" th:if="${process.getRequestResults()!= null && process.getRequestResults().size()>0}">
+                        <div class="row no-gutters" th:each="result : ${process.getRequestResults()}" >
+                            <div class="col-md-3">
+                                <img onclick="showIt(this.src)" th:src="@{${process.getImage()}}">
+                            </div>
+                            <div class="col-md-3">
+                                <img onclick="showIt(this.src)" th:src="@{${result.getImage()}}">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${result.getPerson().surname} + ' '+${result.getPerson().name}">Card title</h5>
+                                    <p class="card-text" th:text="'Percentage: ' + ${result.percentage}" th:if="${result.percentage>60}" style="color: #00b26f"></p>
+                                    <p class="card-text" th:text="'Percentage: ' + ${result.percentage}" th:if="${result.percentage<60}" style="color: red"></p>
+                                    <p class="card-text" th:text="'Position: ' + ${result.getPerson().personPosition.name()} "></p>
+                                    <p class="card-text" th:text="'Faculty: ' + ${result.getPerson().faculty}"></p>
+                                    <p class="card-text" th:text="'Group: ' + ${result.getPerson().groupName}"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-12" th:if="${process.getRequestResults()==null || process.getRequestResults().size()==0}">
+                        <div class="row no-gutters" >
+                            <div class="col-md-3">
+                                <img onclick="showIt(this.src)" th:src="@{${process.getImage()}}">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title">Unknown person</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -236,22 +222,34 @@
         </div>
     </div>
 </div>
-
+<div id="imageModal" style="overflow: auto" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img class="modal-content" id="img01"/>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
-    $(document).ready(function () {
-        if($("#error").val()==1){
-            $('#basicExampleModal').modal('show');
-        }
-        $("#example").DataTable({
-            "scrollX":"500px",
-            "scrollCollapse": true,
-        });
-    });
-</script>
 
+    function showIt(url){
+        var modalImg = document.getElementById("img01");
+        modalImg.src = url;
+        $('#imageModal').modal('show');
+    }
+
+</script>
+<!-- Jquery JS-->
 <script th:src="@{/vendor/jquery-3.2.1.min.js}"></script>
 <script th:src="@{/vendor/bootstrap-4.1/popper.min.js}"></script>
 <script th:src="@{/vendor/slick/slick.min.js}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script th:src="@{/vendor/animsition/animsition.min.js}"></script>
 <script th:src="@{/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js}"></script>
 <script th:src="@{/vendor/counter-up/jquery.waypoints.min.js}"></script>
@@ -262,9 +260,7 @@
 <script th:src="@{/vendor/select2/select2.min.js}"></script>
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/vendor/bootstrap-4.1/bootstrap.min.js}"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
 </body>
 
 </html>

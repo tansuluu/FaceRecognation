@@ -29,4 +29,9 @@ public class RequestResult extends BaseEntity {
     @JoinColumn(name = "person_id", nullable = false)
     private Person person;
 
+    public String getImage(){
+        return "/image/"+fileName;
+    }
+
+
 }
