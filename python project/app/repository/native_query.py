@@ -54,9 +54,19 @@ def get_request_process(request_id):
     return result
 
 
-def get_all_people():
+def get_people(request):
     from app import db
-    query = 'SELECT * FROM PERSON where face_encodings is not null and removed_date is null order by created_date desc'
-    result = db.engine.execute(query).fetchall()
+    if request.gender is not None and request.person_position is not None:
+        query = 'SELECT * FROM PERSON where face_encodings is not null and removed_date is null and gender=%s and person_position=%s order by created_date desc'
+        result = db.engine.execute(query, (request.gender, request.person_position)).fetchall()
+    elif request.gender is not None and request.person_position is None:
+        query = 'SELECT * FROM PERSON where face_encodings is not null and removed_date is null and gender=%s order by created_date desc'
+        result = db.engine.execute(query, (request.gender)).fetchall()
+    elif request.gender is None and request.person_position is not None:
+        query = 'SELECT * FROM PERSON where face_encodings is not null and removed_date is null and person_position=%s order by created_date desc'
+        result = db.engine.execute(query, (request.person_position)).fetchall()
+    else:
+        query = 'SELECT * FROM PERSON where face_encodings is not null and removed_date is null order by created_date desc'
+        result = db.engine.execute(query).fetchall()
     db.session.close()
     return result

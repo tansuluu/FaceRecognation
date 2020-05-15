@@ -13,7 +13,7 @@ def request_process():
         update_request("IN_PROGRESS", request[0].id)
         print("Face recognition started for " + str(request[0].id))
         log("Face recognition started for " + str(request[0].id))
-        recognize(request[0].id)
+        recognize(request[0])
         print("Face recognition finished for " + str(request[0].id))
         log("Face recognition finished for " + str(request[0].id))
     except Exception as e:

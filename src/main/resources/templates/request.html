@@ -218,7 +218,8 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-1">Position</label>
-                            <select class="form-control" required="required" th:field="*{personPosition}">
+                            <select class="form-control" th:field="*{personPosition}">
+                                <option th:value="null"></option>
                                 <option th:each="position : ${T(aiu.edu.kg.FaceRecognation.enums.PersonPosition).values()}"
                                         th:value="${position}"
                                         th:text="${position}"></option>
@@ -226,7 +227,8 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-1">Gender</label>
-                            <select class="form-control" required="required" th:field="*{gender}">
+                            <select class="form-control" th:field="*{gender}">
+                                <option th:value="null"></option>
                                 <option th:each="gen : ${T(aiu.edu.kg.FaceRecognation.enums.Gender).values()}"
                                         th:value="${gen}"
                                         th:text="${gen}"></option>
