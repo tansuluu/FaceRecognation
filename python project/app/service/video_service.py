@@ -7,10 +7,10 @@ import app.services.multimedia.ffmpeg as ffmpeg
 import os
 directory = "../upload-dir/frame/"
 
-
-def get_file_size_in_bytes(file_path):
-    size = os.path.getsize(file_path)
-    return size
+#
+# def get_file_size_in_bytes(file_path):
+#     size = os.path.getsize(file_path)
+#     return size
 
 
 def validateVideo(stage):
@@ -66,13 +66,13 @@ def extractOptimalSnapshotFromVideo(pathToVideo, process):
                     names.append(i+".jpg")
                     frames.append(frame)
 
-    for i in range(0, len(names)):
-        max_size = 0
-        size = get_file_size_in_bytes(directory+names[i])
-        if max_size < size:
-            max_size = size
-        if int(max_size/2) > size:
-            _delete_temp_file(directory+names[i])
+    # for i in range(0, len(names)):
+    #     max_size = 0
+    #     size = get_file_size_in_bytes(directory+names[i])
+    #     if max_size < size:
+    #         max_size = size
+    #     if int(max_size/2) > size:
+    #         _delete_temp_file(directory+names[i])
     cap.release()
     cv2.destroyAllWindows()
 

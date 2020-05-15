@@ -153,8 +153,11 @@
                 <div class="row" th:each="process:${processes}">
                     <div class="card mb-12" th:if="${process.getRequestResults()!= null && process.getRequestResults().size()>0}">
                         <div class="row no-gutters" th:each="result : ${process.getRequestResults()}" >
-                            <div class="col-md-3">
-                                <img onclick="showIt(this.src)" th:src="@{${process.getImage()}}">
+                            <div class="col-md-3" >
+                                <img onclick="showIt(this.src)" th:src="@{${process.getImage()}}" th:if="${item.fileType =='IMAGE'}">
+                                <video controls  th:if="${item.fileType !='IMAGE'}" style="max-width: 100%">
+                                <source th:src="@{${process.getImage()}}">
+                                </video>
                             </div>
                             <div class="col-md-3">
                                 <img onclick="showIt(this.src)" th:src="@{${result.getImage()}}">
@@ -174,7 +177,10 @@
                     <div class="card mb-12" th:if="${process.getRequestResults()==null || process.getRequestResults().size()==0}">
                         <div class="row no-gutters" >
                             <div class="col-md-3">
-                                <img onclick="showIt(this.src)" th:src="@{${process.getImage()}}">
+                                <img onclick="showIt(this.src)" th:src="@{${process.getImage()}}" th:if="${item.fileType =='IMAGE'}">
+                                <video controls  th:if="${item.fileType !='IMAGE'}"  style="max-width: 100%">
+                                    <source th:src="@{${process.getImage()}}">
+                                </video>
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body">
