@@ -2,6 +2,7 @@ package aiu.edu.kg.FaceRecognation.service;
 
 import aiu.edu.kg.FaceRecognation.entity.Request;
 import aiu.edu.kg.FaceRecognation.entity.User;
+import aiu.edu.kg.FaceRecognation.enums.RequestStatus;
 import aiu.edu.kg.FaceRecognation.enums.StageStatus;
 import aiu.edu.kg.FaceRecognation.repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class RequestService {
         return requestRepository.save(request);
     }
 
+    public Request justSave(Request request){
+        return requestRepository.save(request);
+    }
+
     public Request getById(Long id){
         return requestRepository.getOne(id);
     }
@@ -40,5 +45,9 @@ public class RequestService {
 
     public void deleteByUser(User user){
         requestRepository.deleteAll(requestRepository.getAllByUser(user));
+    }
+
+    public List<Request> findAllByStatusAndSent(StageStatus status, int sent){
+        return requestRepository.findAllByStatusAndSent(status, sent);
     }
 }
