@@ -33,6 +33,8 @@ public class Request extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    private int sent=0;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

@@ -24,6 +24,8 @@ public class User extends BaseEntity{
 
     private String position;
 
+    private String email;
+
     @ManyToMany
     private Set<Role> roles;
 
