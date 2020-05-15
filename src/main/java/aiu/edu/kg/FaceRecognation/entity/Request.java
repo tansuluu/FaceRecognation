@@ -1,6 +1,7 @@
 package aiu.edu.kg.FaceRecognation.entity;
 
 import aiu.edu.kg.FaceRecognation.base.BaseEntity;
+import aiu.edu.kg.FaceRecognation.enums.FileType;
 import aiu.edu.kg.FaceRecognation.enums.Gender;
 import aiu.edu.kg.FaceRecognation.enums.PersonPosition;
 import aiu.edu.kg.FaceRecognation.enums.StageStatus;
@@ -24,6 +25,10 @@ public class Request extends BaseEntity {
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private StageStatus status;
+
+    @Column(name = "file_type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private FileType fileType;
 
     @Column(name = "person_position")
     @Enumerated(EnumType.STRING)
