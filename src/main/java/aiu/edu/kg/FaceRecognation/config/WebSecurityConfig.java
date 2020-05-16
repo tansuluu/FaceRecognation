@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/registration").permitAll()
+                .antMatchers("/add").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -56,6 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
+                .antMatchers(HttpMethod.PUT,"/add/**")
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/vendor/**", "/images/**","/fonts/**", "/register/**","/sass/**","/register/**","/register/css/**","/register/fonts/**","/register/images/**","/register/js/**","/register/vendor/**","/folderforadmin/**");
     }
 }

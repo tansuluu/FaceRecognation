@@ -5,7 +5,7 @@ public enum ResultDetail {
     EXCEPTION_ERROR,
     REQUEST_ID_NOT_GIVEN,
     REQUEST_ID_ALREADY_EXIST,
-    WRONG_REQUEST_ID
+    WRONG_REQUEST_ID;
 
     public static ResultDetail valueOf(int value) {
         for (ResultDetail state : ResultDetail.values()) {

@@ -1,17 +1,19 @@
 package aiu.edu.kg.FaceRecognation.model;
 
+import aiu.edu.kg.FaceRecognation.enums.ResultCode;
+import aiu.edu.kg.FaceRecognation.enums.ResultDetail;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import kg.nurtelecom.api.enums.ResultCode;
-import kg.nurtelecom.api.enums.ResultDetail;
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class ResponseMessage<T> {
 
     private T result;
     private ResultCode resultCode;
     private ResultDetail detailCode;
-
-    public ResponseMessage() {
-    }
 
     public ResponseMessage(ResultCode resultCode) {
         this.resultCode = resultCode;
@@ -23,28 +25,4 @@ public class ResponseMessage<T> {
         this.detailCode = detail;
     }
 
-
-    public T getResult() {
-        return result;
-    }
-
-    public void setResult(T result) {
-        this.result = result;
-    }
-
-    public ResultCode getResultCode() {
-        return resultCode;
-    }
-
-    public void setResultCode(ResultCode resultCode) {
-        this.resultCode = resultCode;
-    }
-
-    public ResultDetail getDetailCode() {
-        return detailCode;
-    }
-
-    public void setDetailCode(ResultDetail detailCode) {
-        this.detailCode = detailCode;
-    }
 }
