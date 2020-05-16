@@ -44,4 +44,11 @@ public class Request extends BaseEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    public Request(String title, FileType fileType, PersonPosition personPosition, Gender gender, User user) {
+        this.title = title;
+        this.fileType = fileType;
+        this.personPosition = personPosition;
+        this.gender = gender;
+        this.user = user;
+    }
 }
