@@ -6,6 +6,7 @@ import aiu.edu.kg.FaceRecognation.enums.Gender;
 import aiu.edu.kg.FaceRecognation.enums.PersonPosition;
 import aiu.edu.kg.FaceRecognation.enums.StageStatus;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "request")
+@NoArgsConstructor
 public class Request extends BaseEntity {
 
     @Id

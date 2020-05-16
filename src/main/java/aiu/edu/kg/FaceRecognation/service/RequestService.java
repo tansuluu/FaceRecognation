@@ -62,8 +62,8 @@ public class RequestService {
         return requestRepository.findAllByStatusAndSent(status, sent);
     }
 
-    public ResponseMessage<String> validateAndSave(RequestDTO requestDTO){
-        ResponseMessage<String> responseMessage = new ResponseMessage<>(ResultCode.FAIL);
+    public ResponseMessage<Long> validateAndSave(RequestDTO requestDTO){
+        ResponseMessage<Long> responseMessage = new ResponseMessage<>(ResultCode.FAIL);
         User user = userService.findByUsername(requestDTO.getUsername());
         if (user==null){
             responseMessage.setDetailCode(ResultDetail.USER_NOT_FOUND);
@@ -83,7 +83,7 @@ public class RequestService {
             for(MultipartFile file : requestDTO.getFiles()) {
                 requestProcessService.save(request, file);
             }
-            responseMessage.setResult(String.valueOf(request.getId()));
+            responseMessage.setResult(request.getId());
             responseMessage.setDetailCode(ResultDetail.OK);
             responseMessage.setResultCode(ResultCode.SUCCESS);
             return responseMessage;
