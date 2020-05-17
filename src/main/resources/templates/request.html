@@ -176,6 +176,9 @@
                                             <th>Title</th>
                                             <th>Status</th>
                                             <th>User</th>
+                                            <th>File type</th>
+                                            <th>Gender</th>
+                                            <th>Position</th>
                                             <th></th>
                                         </tr>
                                         </thead>
@@ -184,6 +187,9 @@
                                             <td ><a th:href="@{/request/view(id=${item.id})}" th:text="${item.title}"></a></td>
                                             <td th:text="${item.status.name()}"></td>
                                             <td th:text="${item.user.fullName}"></td>
+                                            <td th:text="${item.fileType.name()}"></td>
+                                            <td th:text="${item.gender}"></td>
+                                            <td th:text="${item.personPosition}"></td>
                                             <td class="button"><a th:if="${item.status.name()}=='NEW'" th:href="@{/request/delete(id=${item.id})}">Delete</a></td>
                                         </tr>
                                         </tbody>

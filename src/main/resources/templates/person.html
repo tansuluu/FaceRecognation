@@ -175,6 +175,7 @@
                                         <th>Position</th>
                                         <th>Faculty</th>
                                         <th>Group</th>
+                                        <th>Active</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -190,6 +191,7 @@
                                         <td th:text="${item.personPosition.name()}"></td>
                                         <td th:text="${item.faculty}"></td>
                                         <td th:text="${item.groupName}"></td>
+                                        <td th:text="${item.getFace_encodings()==null? 'Active' : 'Not acvive'}"></td>
                                         <td class="button"><a th:href="@{/person/delete/} + ${item.id}" >Delete</a></td>
                                         <td class="button"><button th:onclick="'getModel(\'' + @{/person/get/} + ${item.id} +  '\');'" >Update</button></td>
                                     </tr>
