@@ -7,22 +7,20 @@ from app.service.person_service import start_process_person
 from app.service.request_service import request_process
 
 
-def privet():
-    print("priver")
-    from app import db
-    queryPassFront = 'SELECT * FROM user order by created_date desc limit 1'
-    result = db.engine.execute(queryPassFront).fetchall()
-    db.session.close()
-    print(result[0].full_name)
-
-
 def run_request():
+    from app import app, log
+    log("in run_request")
+    print("in run_request")
     request_process()
+    print("after run_request")
 
 
 def process_person():
+    from app import app, log
+    log("in process_person")
+    print("in process_person")
     start_process_person()
-
+    print("after process_person")
 
 def run_schedule():
     from app import app, log
