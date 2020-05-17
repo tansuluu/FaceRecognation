@@ -19,7 +19,7 @@ backcall==0.1.0
 beautifulsoup4==4.6.3
 bf==1.9.0
 bl==2.3.0
-bleach==3.1.0
+bleach==3.1.4
 bq==0.8.0
 bq-helper==0.4.1
 bq-lib==0.1
