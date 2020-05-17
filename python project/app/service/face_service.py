@@ -7,6 +7,7 @@ from app.repository.native_query import save_request_result, update_request, get
     get_people
 
 directory = "../upload-dir/"
+# directory = "/var/face/upload/"
 
 
 def recognize(request):

@@ -2,6 +2,7 @@ from app.repository.native_query import get_people_to_process, update_person, ge
 import face_recognition
 
 directory = "../upload-dir/"
+# directory = "/var/face/upload/"
 
 
 def start_process_person():
