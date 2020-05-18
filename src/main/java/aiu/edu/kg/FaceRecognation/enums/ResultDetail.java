@@ -8,7 +8,12 @@ public enum ResultDetail {
     REQUEST_ID_NOT_GIVEN,
     REQUEST_ID_ALREADY_EXIST,
     WRONG_REQUEST_ID,
-    OK;
+    OK,
+    NAME_IS_EMPTY,
+    SURNAME_IS_EMPTY,
+    POSITION_IS_EMPTY,
+    GENDER_IS_EMPTY;
+
 
     public static ResultDetail valueOf(int value) {
         for (ResultDetail state : ResultDetail.values()) {

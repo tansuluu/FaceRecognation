@@ -4,6 +4,7 @@ import aiu.edu.kg.FaceRecognation.base.BaseEntity;
 import aiu.edu.kg.FaceRecognation.enums.Gender;
 import aiu.edu.kg.FaceRecognation.enums.PersonPosition;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "person")
 public class Person extends BaseEntity {
     @Id
@@ -46,4 +48,14 @@ public class Person extends BaseEntity {
         return "/image/"+fileName;
     }
 
+    public Person(String surname, String name, String patronymic, String groupName, String faculty, PersonPosition personPosition, Gender gender, User user) {
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.groupName = groupName;
+        this.faculty = faculty;
+        this.personPosition = personPosition;
+        this.gender = gender;
+        this.user = user;
+    }
 }

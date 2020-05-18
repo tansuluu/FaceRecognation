@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/registration").permitAll()
-                .antMatchers("/add", "/get/**", "/image/**").permitAll()
+                .antMatchers("/createRequest","/createPerson","/api/createPerson/**", "/api/**", "/api/createRequest/**","/getPerson/**","/api/getPerson/**","/api/getRequest/**", "/image/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -58,7 +58,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers(HttpMethod.PUT,"/add/**")
+                .antMatchers(HttpMethod.PUT,"/createRequest/**")
+                .antMatchers(HttpMethod.PUT,"/createPerson/**")
+                .antMatchers(HttpMethod.PUT,"/api/createRequest/**")
+                .antMatchers(HttpMethod.PUT,"/api/createPerson/**")
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/vendor/**", "/images/**","/fonts/**", "/register/**","/sass/**","/register/**","/register/css/**","/register/fonts/**","/register/images/**","/register/js/**","/register/vendor/**","/folderforadmin/**");
     }
 }

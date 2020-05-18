@@ -157,7 +157,7 @@
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <button type="button" class="au-btn au-btn-icon au-btn--blue"  th:onclick="'getModel(\'' + @{/person/get} +  '\');'" style="line-height: 30px; font-size: 12px">
-                                        <i class="zmdi zmdi-plus"></i> user
+                                        <i class="zmdi zmdi-plus"></i> person
                                     </button>
                                 </div>
 
@@ -191,7 +191,7 @@
                                         <td th:text="${item.personPosition.name()}"></td>
                                         <td th:text="${item.faculty}"></td>
                                         <td th:text="${item.groupName}"></td>
-                                        <td th:text="${item.getFace_encodings()==null? 'Active' : 'Not acvive'}"></td>
+                                        <td th:text="${item.getFace_encodings() !=null? 'Active' : 'Not acvive'}"></td>
                                         <td class="button"><a th:href="@{/person/delete/} + ${item.id}" >Delete</a></td>
                                         <td class="button"><button th:onclick="'getModel(\'' + @{/person/get/} + ${item.id} +  '\');'" >Update</button></td>
                                     </tr>

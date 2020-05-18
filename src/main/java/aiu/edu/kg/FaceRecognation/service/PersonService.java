@@ -1,6 +1,13 @@
 package aiu.edu.kg.FaceRecognation.service;
 
+import aiu.edu.kg.FaceRecognation.dto.PersonDTO;
+import aiu.edu.kg.FaceRecognation.dto.RequestDTO;
 import aiu.edu.kg.FaceRecognation.entity.Person;
+import aiu.edu.kg.FaceRecognation.entity.Request;
+import aiu.edu.kg.FaceRecognation.entity.User;
+import aiu.edu.kg.FaceRecognation.enums.ResultCode;
+import aiu.edu.kg.FaceRecognation.enums.ResultDetail;
+import aiu.edu.kg.FaceRecognation.model.ResponseMessage;
 import aiu.edu.kg.FaceRecognation.repository.PersonRepository;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +27,9 @@ public class PersonService {
 
     @Autowired
     private StorageService storageService;
+
+    @Autowired
+    private UserService userService;
 
     public List<Person> findAll(){
         return personRepository.findAllByRemovedDateIsNull();
@@ -58,6 +68,48 @@ public class PersonService {
             storageService.store(file, fileName);
             person.setFileName(fileName);
             personRepository.save(person);
+        }
+    }
+
+    public ResponseMessage<Long> validateAndSave(PersonDTO personDTO){
+        ResponseMessage<Long> responseMessage = new ResponseMessage<>(ResultCode.FAIL);
+        User user = userService.findByUsername(personDTO.getUsername());
+        if (user==null){
+            responseMessage.setDetailCode(ResultDetail.USER_NOT_FOUND);
+            return responseMessage;
+        }
+        else if (personDTO.getFile().isEmpty()){
+            responseMessage.setDetailCode(ResultDetail.FILES_ARE_EMPTY);
+            return responseMessage;
+        }
+        else if(personDTO.getName() == null){
+            responseMessage.setDetailCode(ResultDetail.NAME_IS_EMPTY);
+            return responseMessage;
+        }
+        else if(personDTO.getSurname() == null){
+            responseMessage.setDetailCode(ResultDetail.SURNAME_IS_EMPTY);
+            return responseMessage;
+        }
+        else if(personDTO.getPersonPosition() == null){
+            responseMessage.setDetailCode(ResultDetail.POSITION_IS_EMPTY);
+            return responseMessage;
+        }
+        else if(personDTO.getGender() == null){
+            responseMessage.setDetailCode(ResultDetail.GENDER_IS_EMPTY);
+            return responseMessage;
+        }
+        else{
+            Person person = new Person(personDTO.getSurname(),personDTO.getName(),personDTO.getPatronymic(), personDTO.getGroupName(),
+                    personDTO.getFaculty(), personDTO.getPersonPosition(), personDTO.getGender(),user);
+            person = personRepository.save(person);
+            String fileName = FILE+person.getId()+ "." + FilenameUtils.getExtension(personDTO.getFile().getOriginalFilename());
+            storageService.store(personDTO.getFile(), fileName);
+            person.setFileName(fileName);
+            this.personRepository.save(person);
+            responseMessage.setResult(person.getId());
+            responseMessage.setDetailCode(ResultDetail.OK);
+            responseMessage.setResultCode(ResultCode.SUCCESS);
+            return responseMessage;
         }
     }
 
