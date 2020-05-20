@@ -26,6 +26,11 @@ public class User extends BaseEntity{
 
     private String email;
 
+    @Column(columnDefinition="blob")
+    private String allowedIp;
+
+    private String token;
+
     @ManyToMany
     private Set<Role> roles;
 

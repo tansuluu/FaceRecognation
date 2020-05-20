@@ -2,6 +2,7 @@ package aiu.edu.kg.FaceRecognation.enums;
 
 public enum ResultDetail {
     USER_NOT_FOUND,
+    AUTHENTICATION_FAILED,
     FILES_ARE_EMPTY,
     FILE_TYPE_IS_WRONG,
     EXCEPTION_ERROR,

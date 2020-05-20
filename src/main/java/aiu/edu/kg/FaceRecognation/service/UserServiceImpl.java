@@ -62,4 +62,8 @@ public class UserServiceImpl implements UserService {
         this.save(userToUpdate);
         return userToUpdate;
     }
+
+    public User findByIpAndToken(String ip, String token){
+        return userRepository.findByAllowedIpContainsAndToken(ip, token);
+    }
 }

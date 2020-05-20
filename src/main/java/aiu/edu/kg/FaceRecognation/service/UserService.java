@@ -18,5 +18,5 @@ public interface UserService {
 
     User update(User user, User userToUpdate);
 
-
+    User findByIpAndToken(String ip, String token);
 }
