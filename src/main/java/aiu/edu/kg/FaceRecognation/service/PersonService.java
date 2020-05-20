@@ -1,9 +1,7 @@
 package aiu.edu.kg.FaceRecognation.service;
 
 import aiu.edu.kg.FaceRecognation.dto.PersonDTO;
-import aiu.edu.kg.FaceRecognation.dto.RequestDTO;
 import aiu.edu.kg.FaceRecognation.entity.Person;
-import aiu.edu.kg.FaceRecognation.entity.Request;
 import aiu.edu.kg.FaceRecognation.entity.User;
 import aiu.edu.kg.FaceRecognation.enums.ResultCode;
 import aiu.edu.kg.FaceRecognation.enums.ResultDetail;
@@ -16,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonService {
@@ -37,6 +36,10 @@ public class PersonService {
 
     public Person get(Long id){
         return personRepository.getOne(id);
+    }
+
+    public Optional<Person> findById(Long id){
+        return personRepository.findById(id);
     }
 
     public void delete(Long id){

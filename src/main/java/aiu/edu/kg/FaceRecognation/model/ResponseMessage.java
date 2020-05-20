@@ -19,8 +19,7 @@ public class ResponseMessage<T> {
         this.resultCode = resultCode;
     }
 
-    public ResponseMessage(T result, ResultCode resultCode, ResultDetail detail) {
-        this.result = result;
+    public ResponseMessage(ResultCode resultCode, ResultDetail detail) {
         this.resultCode = resultCode;
         this.detailCode = detail;
     }

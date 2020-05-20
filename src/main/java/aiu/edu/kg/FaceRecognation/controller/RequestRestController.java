@@ -2,8 +2,11 @@ package aiu.edu.kg.FaceRecognation.controller;
 
 import aiu.edu.kg.FaceRecognation.dto.PersonDTO;
 import aiu.edu.kg.FaceRecognation.dto.RequestDTO;
+import aiu.edu.kg.FaceRecognation.entity.Person;
 import aiu.edu.kg.FaceRecognation.entity.Request;
 import aiu.edu.kg.FaceRecognation.entity.RequestProcess;
+import aiu.edu.kg.FaceRecognation.enums.ResultCode;
+import aiu.edu.kg.FaceRecognation.enums.ResultDetail;
 import aiu.edu.kg.FaceRecognation.enums.StageStatus;
 import aiu.edu.kg.FaceRecognation.model.PersonModel;
 import aiu.edu.kg.FaceRecognation.model.ProcessModel;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -41,19 +45,26 @@ public class RequestRestController {
 
     @ResponseBody
     @RequestMapping(value = "/getRequest/{id}", method = RequestMethod.GET)
-    public RequestResponse getRequest(@PathVariable("id") Long id){
-        Request request = requestService.getById(id);
-        RequestResponse requestResponse = new RequestResponse(request.getTitle(), request.getStatus());
-        if (request.getStatus() == StageStatus.FINISHED) {
-            List<RequestProcess> requestProcesses = requestProcessService.findAllByRequest(request);
-            List<ProcessModel> result = new ArrayList<>();
-            for (RequestProcess requestProcess : requestProcesses) {
-                result.addAll(requestProcess.getRequestResults().stream().map(t -> new ProcessModel(t)).collect(Collectors.toList()));
+    public ResponseMessage<?> getRequest(@PathVariable("id") Long id){
+        ResponseMessage responseMessage = new ResponseMessage(ResultCode.SUCCESS, ResultDetail.OK);
+        Optional<Request> request = requestService.findById(id);
+        if (request.isPresent()) {
+            RequestResponse requestResponse = new RequestResponse(request.get().getTitle(), request.get().getStatus());
+            if (request.get().getStatus() == StageStatus.FINISHED) {
+                List<RequestProcess> requestProcesses = requestProcessService.findAllByRequest(request.get());
+                List<ProcessModel> result = new ArrayList<>();
+                for (RequestProcess requestProcess : requestProcesses) {
+                    result.addAll(requestProcess.getRequestResults().stream().map(t -> new ProcessModel(t)).collect(Collectors.toList()));
+                }
+                requestResponse.setResult(result);
             }
-            requestResponse.setResult(result);
+            responseMessage.setResult(requestResponse);
         }
-
-        return requestResponse;
+        else {
+            responseMessage.setResultCode(ResultCode.FAIL);
+            responseMessage.setDetailCode(ResultDetail.WRONG_REQUEST_ID);
+        }
+        return responseMessage;
     }
 
     @ResponseBody
@@ -64,8 +75,16 @@ public class RequestRestController {
 
     @ResponseBody
     @RequestMapping(value = "/getPerson/{id}", method = RequestMethod.GET)
-    public PersonModel get(@PathVariable("id") Long id){
-        return new PersonModel(personService.get(id));
+    public ResponseMessage<?> get(@PathVariable("id") Long id){
+        Optional<Person> person = personService.findById(id);
+        ResponseMessage responseMessage = new ResponseMessage(ResultCode.SUCCESS, ResultDetail.OK);
+        if(person.isPresent()){
+            responseMessage.setResult(new PersonModel(person.get()));
+        }else{
+            responseMessage.setResultCode(ResultCode.FAIL);
+            responseMessage.setDetailCode(ResultDetail.WRONG_REQUEST_ID);
+        }
+        return responseMessage;
     }
 
 }

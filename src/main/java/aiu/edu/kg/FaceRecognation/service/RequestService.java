@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RequestService {
@@ -26,6 +27,10 @@ public class RequestService {
 
     @Autowired
     private RequestProcessService requestProcessService;
+
+    public Optional<Request> findById(Long id){
+        return requestRepository.findById(id);
+    }
 
     public List<Request> all(){
         return requestRepository.findAll();
@@ -73,7 +78,7 @@ public class RequestService {
             return responseMessage;
         }
         else if(requestDTO.getFileType() == null){
-            responseMessage.setDetailCode(ResultDetail.FILE_TYPE_IS_WONG);
+            responseMessage.setDetailCode(ResultDetail.FILE_TYPE_IS_WRONG);
             return responseMessage;
         }
         else{
