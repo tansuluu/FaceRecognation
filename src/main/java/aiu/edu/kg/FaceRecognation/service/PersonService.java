@@ -9,6 +9,8 @@ import aiu.edu.kg.FaceRecognation.model.ResponseMessage;
 import aiu.edu.kg.FaceRecognation.repository.PersonRepository;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -74,32 +76,27 @@ public class PersonService {
         }
     }
 
-    public ResponseMessage<Long> validateAndSave(PersonDTO personDTO){
+    public ResponseEntity<?> validateAndSave(PersonDTO personDTO){
         ResponseMessage<Long> responseMessage = new ResponseMessage<>(ResultCode.FAIL);
         User user = userService.findByUsername(personDTO.getUsername());
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         if (user==null){
             responseMessage.setDetailCode(ResultDetail.USER_NOT_FOUND);
-            return responseMessage;
         }
         else if (personDTO.getFile()==null || personDTO.getFile().isEmpty()){
             responseMessage.setDetailCode(ResultDetail.FILES_ARE_EMPTY);
-            return responseMessage;
         }
         else if(personDTO.getName() == null){
             responseMessage.setDetailCode(ResultDetail.NAME_IS_EMPTY);
-            return responseMessage;
         }
         else if(personDTO.getSurname() == null){
             responseMessage.setDetailCode(ResultDetail.SURNAME_IS_EMPTY);
-            return responseMessage;
         }
         else if(personDTO.getPersonPosition() == null){
             responseMessage.setDetailCode(ResultDetail.POSITION_IS_EMPTY);
-            return responseMessage;
         }
         else if(personDTO.getGender() == null){
             responseMessage.setDetailCode(ResultDetail.GENDER_IS_EMPTY);
-            return responseMessage;
         }
         else{
             Person person = new Person(personDTO.getSurname(),personDTO.getName(),personDTO.getPatronymic(), personDTO.getGroupName(),
@@ -112,8 +109,9 @@ public class PersonService {
             responseMessage.setResult(person.getId());
             responseMessage.setDetailCode(ResultDetail.OK);
             responseMessage.setResultCode(ResultCode.SUCCESS);
-            return responseMessage;
+            return new ResponseEntity<>(responseMessage, HttpStatus.OK);
         }
+        return new ResponseEntity<>(responseMessage, status);
     }
 
 }

@@ -16,6 +16,8 @@ import aiu.edu.kg.FaceRecognation.service.PersonService;
 import aiu.edu.kg.FaceRecognation.service.RequestProcessService;
 import aiu.edu.kg.FaceRecognation.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -39,13 +41,13 @@ public class RequestRestController {
 
     @ResponseBody
     @RequestMapping(value = "/createRequest", method = RequestMethod.PUT, consumes = {"multipart/form-data"})
-    public ResponseMessage<Long> addRequest(@ModelAttribute RequestDTO requestDTO){
+    public ResponseEntity<?> addRequest(@ModelAttribute RequestDTO requestDTO){
         return requestService.validateAndSave(requestDTO);
     }
 
     @ResponseBody
     @RequestMapping(value = "/getRequest/{id}", method = RequestMethod.GET)
-    public ResponseMessage<?> getRequest(@PathVariable("id") Long id){
+    public ResponseEntity<?> getRequest(@PathVariable("id") Long id){
         ResponseMessage responseMessage = new ResponseMessage(ResultCode.SUCCESS, ResultDetail.OK);
         Optional<Request> request = requestService.findById(id);
         if (request.isPresent()) {
@@ -59,32 +61,34 @@ public class RequestRestController {
                 requestResponse.setResult(result);
             }
             responseMessage.setResult(requestResponse);
-        }
+            return new ResponseEntity<>(responseMessage, HttpStatus.OK);        }
         else {
             responseMessage.setResultCode(ResultCode.FAIL);
             responseMessage.setDetailCode(ResultDetail.WRONG_REQUEST_ID);
+            return new ResponseEntity<>(responseMessage, HttpStatus.BAD_REQUEST);
         }
-        return responseMessage;
     }
 
     @ResponseBody
     @RequestMapping(value = "/createPerson", method = RequestMethod.PUT, consumes = {"multipart/form-data"})
-    public ResponseMessage<Long> save(@ModelAttribute PersonDTO personDTO){
+    public ResponseEntity<?> save(@ModelAttribute PersonDTO personDTO){
         return personService.validateAndSave(personDTO);
     }
 
     @ResponseBody
     @RequestMapping(value = "/getPerson/{id}", method = RequestMethod.GET)
-    public ResponseMessage<?> get(@PathVariable("id") Long id){
+    public ResponseEntity<?> get(@PathVariable("id") Long id){
         Optional<Person> person = personService.findById(id);
         ResponseMessage responseMessage = new ResponseMessage(ResultCode.SUCCESS, ResultDetail.OK);
         if(person.isPresent()){
             responseMessage.setResult(new PersonModel(person.get()));
+            return new ResponseEntity<>(responseMessage, HttpStatus.OK);
         }else{
             responseMessage.setResultCode(ResultCode.FAIL);
             responseMessage.setDetailCode(ResultDetail.WRONG_REQUEST_ID);
+            return new ResponseEntity<>(responseMessage, HttpStatus.BAD_REQUEST);
         }
-        return responseMessage;
+
     }
 
 }

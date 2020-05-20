@@ -9,6 +9,8 @@ import aiu.edu.kg.FaceRecognation.enums.StageStatus;
 import aiu.edu.kg.FaceRecognation.model.ResponseMessage;
 import aiu.edu.kg.FaceRecognation.repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -66,20 +68,18 @@ public class RequestService {
         return requestRepository.findAllByStatusAndSent(status, sent);
     }
 
-    public ResponseMessage<Long> validateAndSave(RequestDTO requestDTO){
+    public ResponseEntity<?> validateAndSave(RequestDTO requestDTO){
         ResponseMessage<Long> responseMessage = new ResponseMessage<>(ResultCode.FAIL);
         User user = userService.findByUsername(requestDTO.getUsername());
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         if (user==null){
             responseMessage.setDetailCode(ResultDetail.USER_NOT_FOUND);
-            return responseMessage;
         }
         else if (requestDTO.getFiles()==null || requestDTO.getFiles().size()==0){
             responseMessage.setDetailCode(ResultDetail.FILES_ARE_EMPTY);
-            return responseMessage;
         }
         else if(requestDTO.getFileType() == null){
             responseMessage.setDetailCode(ResultDetail.FILE_TYPE_IS_WRONG);
-            return responseMessage;
         }
         else{
             Request request = new Request(requestDTO.getTitle(), requestDTO.getFileType(), requestDTO.getPersonPosition(), requestDTO.getGender(), user);
@@ -90,7 +90,8 @@ public class RequestService {
             responseMessage.setResult(request.getId());
             responseMessage.setDetailCode(ResultDetail.OK);
             responseMessage.setResultCode(ResultCode.SUCCESS);
-            return responseMessage;
+            return new ResponseEntity<>(responseMessage, HttpStatus.OK);
         }
+        return new ResponseEntity<>(responseMessage, status);
     }
 }
