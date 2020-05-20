@@ -2,7 +2,6 @@ package aiu.edu.kg.FaceRecognation.controller;
 
 import aiu.edu.kg.FaceRecognation.dto.PersonDTO;
 import aiu.edu.kg.FaceRecognation.dto.RequestDTO;
-import aiu.edu.kg.FaceRecognation.entity.Person;
 import aiu.edu.kg.FaceRecognation.entity.Request;
 import aiu.edu.kg.FaceRecognation.entity.RequestProcess;
 import aiu.edu.kg.FaceRecognation.enums.StageStatus;
@@ -23,8 +22,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api")
 public class RequestRestController {
-
-    //TODO ADD BASIC AUTHENTICATION
 
     @Autowired
     private RequestService requestService;

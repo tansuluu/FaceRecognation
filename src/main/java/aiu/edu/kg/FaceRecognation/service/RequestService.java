@@ -3,7 +3,6 @@ package aiu.edu.kg.FaceRecognation.service;
 import aiu.edu.kg.FaceRecognation.dto.RequestDTO;
 import aiu.edu.kg.FaceRecognation.entity.Request;
 import aiu.edu.kg.FaceRecognation.entity.User;
-import aiu.edu.kg.FaceRecognation.enums.RequestStatus;
 import aiu.edu.kg.FaceRecognation.enums.ResultCode;
 import aiu.edu.kg.FaceRecognation.enums.ResultDetail;
 import aiu.edu.kg.FaceRecognation.enums.StageStatus;
@@ -69,7 +68,7 @@ public class RequestService {
             responseMessage.setDetailCode(ResultDetail.USER_NOT_FOUND);
             return responseMessage;
         }
-        else if (requestDTO.getFiles().size()==0){
+        else if (requestDTO.getFiles()==null || requestDTO.getFiles().size()==0){
             responseMessage.setDetailCode(ResultDetail.FILES_ARE_EMPTY);
             return responseMessage;
         }

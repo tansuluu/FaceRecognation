@@ -78,7 +78,7 @@ public class PersonService {
             responseMessage.setDetailCode(ResultDetail.USER_NOT_FOUND);
             return responseMessage;
         }
-        else if (personDTO.getFile().isEmpty()){
+        else if (personDTO.getFile()==null || personDTO.getFile().isEmpty()){
             responseMessage.setDetailCode(ResultDetail.FILES_ARE_EMPTY);
             return responseMessage;
         }

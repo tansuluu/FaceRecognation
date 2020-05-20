@@ -188,8 +188,8 @@
                     <div class="card mb-12" th:if="${process.getRequestResults()==null || process.getRequestResults().size()==0}">
                         <div class="row no-gutters" >
                             <div class="col-md-3">
-                                <img onclick="showIt(this.src)" th:src="@{${process.getImage()}}" th:if="${item.fileType =='IMAGE'}">
-                                <video controls  th:if="${item.fileType !='IMAGE'}"  style="max-width: 100%">
+                                <img onclick="showIt(this.src)" th:src="@{${process.getImage()}}" th:if="${item.fileType.name().equals('IMAGE')}">
+                                <video controls  th:if="${!item.fileType.name().equals('IMAGE')}"  style="max-width: 100%">
                                     <source th:src="@{${process.getImage()}}">
                                 </video>
                             </div>
