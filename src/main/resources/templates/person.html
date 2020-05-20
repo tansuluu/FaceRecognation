@@ -69,6 +69,10 @@
                             <a th:href="@{/person/index}">
                                 <i class="fas fa-chart-bar"></i>Data base</a>
                         </li>
+                        <li>
+                            <a th:href="@{/restapi}">
+                                <i class="fas fa-chart-bar"></i>Rest API</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -98,6 +102,10 @@
                         <li sec:authorize="hasAuthority('ADMIN')"  class="active">
                             <a th:href="@{/person/index}">
                                 <i class="fas fa-users"></i>Data base</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/restapi}">
+                                <i class="fas fa-chart-bar"></i>Rest API</a>
                         </li>
                     </ul>
                 </nav>

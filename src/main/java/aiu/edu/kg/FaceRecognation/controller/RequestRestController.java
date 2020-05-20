@@ -15,10 +15,7 @@ import aiu.edu.kg.FaceRecognation.service.RequestProcessService;
 import aiu.edu.kg.FaceRecognation.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

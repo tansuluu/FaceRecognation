@@ -1,1 +1,2 @@
 INSERT INTO face_recognition.user (id, created_date, password, username, full_name, position, email) VALUES (1, '2020-03-01 17:17:21', '$2a$10$K2cCSEOyAv7vyko7GxvcFOBDHpFNiZGFs4//fwaxxFrgvSQsLiLDS', 'tmyrzaeva', 'Tansuluu Myrzaeva', null, 'tansuluu.myrzaeva@gmail.com');
+INSERT INTO face_recognition.user (id, created_date, password, username, full_name, position, email) VALUES (6, '2020-05-18 14:03:34', '$2a$10$1iujkZuAV2Hg4X2h.j8KyOHyELcctmym73c6dwr7B5xjgfx0B3YtS', 'nshaidullaev', 'Shaidullaev Nurlan', 'Lecturer', 'nurlan.shaidullaev@iaau.edu.kg');

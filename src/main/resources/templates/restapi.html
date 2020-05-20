@@ -2,18 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard</title>
-
+    <title>USERS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <!-- Fontfaces CSS-->
@@ -29,14 +24,14 @@
     <link th:href="@{/vendor/slick/slick.css}" rel="stylesheet" media="all">
     <link th:href="@{/vendor/select2/select2.min.css}" rel="stylesheet" media="all">
     <link th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}" rel="stylesheet" media="all">
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
     <link th:href="@{/css/theme.css}" rel="stylesheet" media="all">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-
 </head>
 
-<body class="animsition">
+<body>
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
@@ -58,7 +53,7 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="active">
+                        <li>
                             <a class="js-arrow"  th:href="@{/}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
@@ -70,13 +65,13 @@
                             <a th:href="@{/request/index}">
                                 <i class="fas fa-chart-bar"></i>Requests</a>
                         </li>
-                        <li>
+                        <li sec:authorize="hasAuthority('ADMIN')"  class="active">
                             <a th:href="@{/person/index}">
                                 <i class="fas fa-chart-bar"></i>Data base</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a th:href="@{/restapi}">
-                                <i class="fas fa-chart-bar"></i>Rest API</a>
+                                <i class="fas fa-chart-bar"></i>Rest AOI</a>
                         </li>
                     </ul>
                 </div>
@@ -92,7 +87,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active">
+                        <li>
                             <a class="js-arrow"  th:href="@{/}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
@@ -104,11 +99,11 @@
                             <a th:href="@{/request/index}">
                                 <i class="fas fa-chart-bar"></i>Requests</a>
                         </li>
-                        <li sec:authorize="hasAuthority('ADMIN')">
+                        <li sec:authorize="hasAuthority('ADMIN')" >
                             <a th:href="@{/person/index}">
                                 <i class="fas fa-users"></i>Data base</a>
                         </li>
-                        <li>
+                        <li  class="active">
                             <a th:href="@{/restapi}">
                                 <i class="fas fa-chart-bar"></i>Rest API</a>
                         </li>
@@ -129,7 +124,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="images/icon/images.png" />
+                                            <img th:src="@{/images/icon/images.png}" />
                                         </div>
                                         <div class="content" th:if="${#request.userPrincipal !=null}">
                                             <a class="js-acc-btn" href="#" th:text="${#request.userPrincipal.name}">john doe</a>
@@ -138,7 +133,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="images/icon/images.png" />
+                                                        <img th:src="@{/images/icon/images.png}"  />
                                                     </a>
                                                 </div>
                                                 <div class="content" th:if="${#request.userPrincipal !=null}">
@@ -159,113 +154,150 @@
                     </div>
                 </div>
             </header>
-            <!-- HEADER DESKTOP-->
+
+        <!-- PAGE CONTAINER-->
+        <!--<div class="page-container">-->
             <!-- MAIN CONTENT-->
-            <div class="main-content">
+            <div class="main-content" style="padding-top: 100px">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="overview-wrap">
-                                    <h2 class="title-1">overview</h2>
-                                   <a th:href="@{/request/index}"><button class="au-btn au-btn-icon au-btn--blue">
-                                       <i class="zmdi zmdi-plus"></i>request</button></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row m-t-25">
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c1">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-account-o"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>1</h2>
-                                                <span>members online</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart1"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c2">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-shopping-cart"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>388</h2>
-                                                <span>requests</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart2"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c3">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-calendar-note"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>10</h2>
-                                                <span>this week</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart3"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c4">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-time"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>1,060</h2>
-                                                <span>total time</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart4"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2020 Tansuluu. All rights reserved.</p>
-                                </div>
-                            </div>
+                        <div class="row" style="width: 100%">
+                            <h3>General provisions</h3>
+                            <p>The recommended speed of the communication channel to the FRA server (IP address 195.38.167.137) is 128 Kbps, the minimum speed should be at least 64 Kbps. Also, the recommended delay is no more than 50-70 ms when sending packets of 32-64 bytes in size.
+                                The system analyzes the messages that came to its address and processes them in accordance with the format. All requests to the System are based on the principle of request-response, and also - each request is accompanied by a
+                                unique QID code to uniquely identify this request, both in the sender system and in the recipient system. The system distinguishes between synchronous and asynchronous requests.
+                                With a synchronous request, a response is sent immediately after processing the request without disconnecting the connection. If a connection break occurs during request processing, the request sender will not
+                                receive the processing results.
+                                All the data necessary for the service provider to generate requests and responses to them is given below.
+                                The HTTP protocol is used for data transfer.
+                            </p>
+                            <h3 style="width: 100%">Create a new face recognition request</h3>
+                            <h4 style="width: 100%">http://195.38.167.137:8080/api/createRequest</h4>
+                            <p style="width: 100%">Method PUT HTTP/1.1</p><br/>
+                            <p style="width: 100%">Content-Type: multipart/form-data</p><br/>
+                            <p style="width: 100%">Parameters:</p><br/>
+                           <ul style="width: 100%">
+                               <li>Title</li>
+                               <li>Username</li>
+                               <li>fileType</li>
+                               <ul>
+                                   <li>IMAGE</li>
+                                   <li>VIDEO</li>
+                               </ul>
+                               <li>Gender</li>
+                               <li>Position</li>
+                               <ul>
+                                   <li>LECTURER</li>
+                                   <li>STUDENT</li>
+                                   <li>STAFF</li>
+                               </ul>
+                           </ul>
+                            <p style="width: 100%">
+                                Example of success response: <br/>
+                                {<br/>
+                                "result": 7,<br/>
+                                "resultCode": "SUCCESS",<br/>
+                                "detailCode": "OK"<br/>
+                                }<br/>
+                                <br/>
+                                Example of fail response:<br/>
+                                {<br/>
+                                "result": null,<br/>
+                                "resultCode": "FAIL",<br/>
+                                "detailCode": "USER_NOT_FOUND"<br/>
+                                }<br/>
+
+                            </p>
+
+                            <h3 style="width: 100%">Get the request result</h3>
+                            <h4 style="width: 100%">http://195.38.167.137:8080/api/getRequest/{id}</h4>
+                            <p style="width: 100%">Method GET HTTP/1.1</p><br/>
+                            <p style="width: 100%">
+                              <br/> Example of response:
+                              <br/> {
+                              <br/> "title": "Video test 6",
+                              <br/> "status": "FINISHED",
+                              <br/> "result": [
+                              <br/> {
+                              <br/> "imageUrl": "http://195.38.167.137:8080/image/result_66file_2.mp4.jpg",
+                              <br/> "percentage": 64,
+                              <br/> "name": "Tansuluu",
+                              <br/> "surname": "Myrzaeva",
+                              <br/> "patronymic": "",
+                              <br/> "faculty": "New technology",
+                              <br/> "groupName": "com16",
+                              <br/> "personPosition": "STUDENT",
+                              <br/> "gender": "FEMALE"
+                              <br/> },
+
+                              <br/> {
+                              <br/> "imageUrl": "http://195.38.167.137:8080/image/result_84file_2.mp4.jpg",
+                              <br/> "percentage": 69,
+                              <br/> "name": "Elmira",
+                              <br/> "surname": "Kanimetova",
+                              <br/> "patronymic": "",
+                              <br/> "faculty": "New technology",
+                              <br/> "groupName": "com16",
+                              <br/> "personPosition": "STUDENT",
+                              <br/> "gender": "FEMALE"
+                              <br/> }
+                              <br/> ]
+                              <br/> }
+
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
+            <!--</div>-->
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
         </div>
 
     </div>
 
+    <div id="myModal" style="overflow: auto" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+        </div>
+    </div>
+    <div id="imageModal" style="overflow: auto" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img class="modal-content" id="img01"/>
+                </div>
+            </div>
+        </div>
+    </div>
+  <script>
+      function getModel(url){
+          $("#myModal .modal-dialog").html("");
+          $("#myModal .modal-dialog").load(url, function () {
+              $("#myModal").modal("show");
+          });
+      }
+      function showIt(url){
+          var modalImg = document.getElementById("img01");
+          modalImg.src = url;
+          $('#imageModal').modal('show');
+      }
+
+      $(document).ready(function () {
+            $("#example").DataTable({
+                "scrollX":"500px",
+                "scrollCollapse": true
+            });
+        });
+    </script>
+    <!-- Jquery JS-->
     <script th:src="@{/vendor/jquery-3.2.1.min.js}"></script>
     <script th:src="@{/vendor/bootstrap-4.1/popper.min.js}"></script>
     <script th:src="@{/vendor/slick/slick.min.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script th:src="@{/vendor/animsition/animsition.min.js}"></script>
     <script th:src="@{/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js}"></script>
     <script th:src="@{/vendor/counter-up/jquery.waypoints.min.js}"></script>
@@ -276,10 +308,8 @@
     <script th:src="@{/vendor/select2/select2.min.js}"></script>
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/vendor/bootstrap-4.1/bootstrap.min.js}"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 </body>
 
 </html>
-<!-- end document-->

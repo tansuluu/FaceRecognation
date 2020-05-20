@@ -10,4 +10,10 @@ public class MainController {
     public String main(){
         return "index";
     }
+
+
+    @RequestMapping("/restapi")
+    public String restapi(){
+        return "restapi";
+    }
 }

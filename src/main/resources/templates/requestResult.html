@@ -68,6 +68,10 @@
                         <a th:href="@{/person/index}" >
                             <i class="fas fa-chart-bar"></i>Data base</a>
                     </li>
+                    <li>
+                        <a th:href="@{/restapi}">
+                            <i class="fas fa-chart-bar"></i>Rest API</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -97,6 +101,10 @@
                     <li sec:authorize="hasAuthority('ADMIN')">
                         <a th:href="@{/person/index}">
                             <i class="fas fa-users"></i>Data base</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/restapi}">
+                            <i class="fas fa-chart-bar"></i>Rest API</a>
                     </li>
                 </ul>
             </nav>
@@ -162,7 +170,10 @@
                             <div class="col-md-3">
                                 <img onclick="showIt(this.src)" th:src="@{${result.getImage()}}">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
+                                <img onclick="showIt(this.src)" th:src="@{${result.getPerson().getImage()}}">
+                            </div>
+                            <div class="col-md-3">
                                 <div class="card-body">
                                     <h5 class="card-title" th:text="${result.getPerson().surname} + ' '+${result.getPerson().name}">Card title</h5>
                                     <p class="card-text" th:text="'Percentage: ' + ${result.percentage}" th:if="${result.percentage>60}" style="color: #00b26f"></p>
