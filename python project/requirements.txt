@@ -55,7 +55,7 @@ matplotlib==3.0.2
 mistune==0.8.4
 nbconvert==5.4.0
 nbformat==4.4.0
-numpy==1.15.4
+numpy==1.22.0
 olefile==0.46
 opencv-contrib-python==4.0.1.24
 opencv-python==4.1.0.25
