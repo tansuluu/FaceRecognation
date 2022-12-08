@@ -25,7 +25,7 @@ bq-helper==0.4.1
 bq-lib==0.1
 bs4==0.0.1
 cachetools==3.0.0
-certifi==2018.10.15
+certifi==2022.12.7
 chardet==3.0.4
 cmake==3.16.3
 colorama==0.4.1
